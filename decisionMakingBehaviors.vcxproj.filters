@@ -1,24 +1,62 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<ItemGroup>
-		<ClCompile Include="src\ofApp.cpp">
-			<Filter>src</Filter>
-		</ClCompile>
-		<ClCompile Include="src\main.cpp">
-			<Filter>src</Filter>
-		</ClCompile>
-	</ItemGroup>
-	<ItemGroup>
-		<Filter Include="src">
-			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
-		</Filter>
-	</ItemGroup>
-	<ItemGroup>
-		<ClInclude Include="src\ofApp.h">
-			<Filter>src</Filter>
-		</ClInclude>
-	</ItemGroup>
-	<ItemGroup>
-		<ResourceCompile Include="icon.rc" />
-	</ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Behavior\basic-motion.cpp" />
+    <ClCompile Include="src\Behavior\Behavior.cpp" />
+    <ClCompile Include="src\Behavior\DynamicAlign.cpp" />
+    <ClCompile Include="src\Behavior\DynamicFace.cpp" />
+    <ClCompile Include="src\Behavior\DynamicLookWhereYouAreGoing.cpp" />
+    <ClCompile Include="src\Behavior\DynamicPathFollow.cpp" />
+    <ClCompile Include="src\Behavior\DynamicSeparation.cpp" />
+    <ClCompile Include="src\Behavior\seek-steering.cpp" />
+    <ClCompile Include="src\Behavior\wander-steering.cpp" />
+    <ClCompile Include="src\Entity\Boid.cpp" />
+    <ClCompile Include="src\Entity\Breadcrumb.cpp" />
+    <ClCompile Include="src\Entity\Flock.cpp" />
+    <ClCompile Include="src\Entity\Kinematic.cpp" />
+    <ClCompile Include="src\Pathfinding\DirectedWeightedGraph.cpp" />
+    <ClCompile Include="src\Pathfinding\DivisionScheme.cpp" />
+    <ClCompile Include="src\Pathfinding\Heuristic.cpp" />
+    <ClCompile Include="src\Pathfinding\Obstacle.cpp" />
+    <ClCompile Include="src\Pathfinding\Pathfinding.cpp" />
+    <ClCompile Include="src\Pathfinding\TiledDivisionScheme.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Behavior\wander-steering.h" />
+    <ClInclude Include="src\Behavior\basic-motion.h" />
+    <ClInclude Include="src\Behavior\Behavior.h" />
+    <ClInclude Include="src\Behavior\DynamicAlign.h" />
+    <ClInclude Include="src\Behavior\DynamicFace.h" />
+    <ClInclude Include="src\Behavior\DynamicLookWhereYouAreGoing.h" />
+    <ClInclude Include="src\Behavior\DynamicPathFollow.h" />
+    <ClInclude Include="src\Behavior\DynamicSeparation.h" />
+    <ClInclude Include="src\Behavior\seek-steering.h" />
+    <ClInclude Include="src\Entity\Boid.h" />
+    <ClInclude Include="src\Entity\Breadcrumb.h" />
+    <ClInclude Include="src\Entity\Flock.h" />
+    <ClInclude Include="src\Entity\Kinematic.h" />
+    <ClInclude Include="src\Pathfinding\TiledDivisionScheme.h" />
+    <ClInclude Include="src\Pathfinding\DirectedWeightedGraph.h" />
+    <ClInclude Include="src\Pathfinding\DivisionScheme.h" />
+    <ClInclude Include="src\Pathfinding\Heuristic.h" />
+    <ClInclude Include="src\Pathfinding\Obstacle.h" />
+    <ClInclude Include="src\Pathfinding\Pathfinding.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
 </Project>
