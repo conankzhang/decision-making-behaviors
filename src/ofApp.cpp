@@ -15,6 +15,13 @@
 #include "Pathfinding/TiledDivisionScheme.h"
 #include "Pathfinding/Obstacle.h"
 
+#include "DecisionMaking/DecisionMakingBehavior.h"
+#include "DecisionMaking/Nodes/FollowWanderDecisionNode.h"
+#include "DecisionMaking/ActionNode.h"
+
+#include "Actions/FollowAction.h"
+#include "Actions/WanderAction.h"
+
 //=======================================================================================================================
 void ofApp::setup()
 {
@@ -32,7 +39,14 @@ void ofApp::setup()
 	DivisionScheme = new CTiledDivisionScheme(ofGetWindowWidth(), ofGetWindowHeight(), 100.0f, 100.0f, Graph);
 	Heuristic = new CZeroEstimate(DivisionScheme);
 
-	Flock = new CFlock(1, FlockBehaviors, ofColor::black);
+	CActionNode* FollowActionNode = new CActionNode(new CFollowAction());
+	CActionNode* WanderActionNode = new CActionNode(new CWanderAction());
+
+	CFollowWanderDecisionNode* Root = new CFollowWanderDecisionNode(FollowActionNode, WanderActionNode);
+	CDecisionMakingBehavior* DecisionTree = new CDecisionMakingBehavior(Root);
+
+	Flock = new CFlock(1, FlockBehaviors, ofColor::black, DecisionTree);
+
 	FlockBehaviors.push_back(SWeightedBehavior(new CDynamicPathFollow(Path, DivisionScheme, Target), 1));
 	FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 }

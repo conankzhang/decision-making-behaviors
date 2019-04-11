@@ -4,9 +4,10 @@
 #include "../Behavior/Behavior.h"
 
 //=======================================================================================================================
-CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InFlockColor) :
+CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InFlockColor, CDecisionMakingBehavior* InDecisionMakingBehavior) :
 	WeightedBehaviors(InWeightedBehaviors),
-	FlockColor(InFlockColor)
+	FlockColor(InFlockColor),
+	DecisionMakingBehavior(InDecisionMakingBehavior)
 {
 	Boids.reserve(InFlockCount);
 	for (int i = 0; i < InFlockCount; i++)
@@ -24,6 +25,11 @@ CFlock::~CFlock()
 	}
 
 	Boids.clear();
+
+	if (DecisionMakingBehavior)
+	{
+		delete DecisionMakingBehavior;
+	}
 }
 
 //=======================================================================================================================

@@ -21,7 +21,7 @@ public:
 	virtual bool CanDoBoth(CAction* InAction);
 	virtual void Execute() = 0;
 
-private:
+protected:
 	double QueuedTime;
 	double ExpiryTime;
 	double Priority;

@@ -7,12 +7,13 @@
 #include <vector>
 
 class CBoid;
+class CDecisionMakingBehavior;
 
 //=======================================================================================================================
 class CFlock
 {
 public:
-	CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InColor);
+	CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InColor, CDecisionMakingBehavior* InDecisionMakingBehavior);
 	~CFlock();
 
 	void Update(float DeltaTime);
@@ -30,4 +31,6 @@ private:
 
 	std::vector<CBoid *> Boids;
 	const std::vector<SWeightedBehavior>& WeightedBehaviors;
+
+	CDecisionMakingBehavior* DecisionMakingBehavior;
 };
