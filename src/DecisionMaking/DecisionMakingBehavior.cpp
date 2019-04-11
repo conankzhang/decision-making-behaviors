@@ -11,6 +11,10 @@ CDecisionMakingBehavior::CDecisionMakingBehavior(CDecisionTreeNode* InRoot) :
 
 CDecisionMakingBehavior::~CDecisionMakingBehavior()
 {
+	if (Root)
+	{
+		delete Root;
+	}
 }
 
 CAction* CDecisionMakingBehavior::GetAction()

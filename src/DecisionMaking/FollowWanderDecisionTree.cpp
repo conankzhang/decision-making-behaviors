@@ -22,4 +22,8 @@ CFollowWanderDecisionTree::CFollowWanderDecisionTree()
 //=======================================================================================================================
 CFollowWanderDecisionTree::~CFollowWanderDecisionTree()
 {
+	if (DecisionTree)
+	{
+		delete DecisionTree;
+	}
 }
