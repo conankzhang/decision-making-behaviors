@@ -43,7 +43,7 @@ private:
 	ofVec2f Target;
 
 	CFlock* Flock;
-	std::vector<SWeightedBehavior> FlockBehaviors;
+	std::vector<SWeightedBehavior*> FlockBehaviors;
 
 	CDivisionScheme* DivisionScheme;
 	CDirectedWeightedGraph* Graph;

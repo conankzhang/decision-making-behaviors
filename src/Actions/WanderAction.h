@@ -9,11 +9,11 @@
 class CWanderAction : public CAction
 {
 public:
-	CWanderAction(std::vector<SWeightedBehavior>& InWeightedBehaviors);
+	CWanderAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors);
 	~CWanderAction();
 
 	virtual void Execute() override;
 
 private:
-	std::vector<SWeightedBehavior>& WeightedBehaviors;
+	std::vector<SWeightedBehavior*>& WeightedBehaviors;
 };

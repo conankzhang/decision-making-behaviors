@@ -14,7 +14,7 @@ class CDecisionMakingBehavior;
 class CFlock
 {
 public:
-	CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InColor, CDecisionMakingBehavior* InDecisionMakingBehavior);
+	CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeightedBehaviors, const ofColor& InColor, CDecisionMakingBehavior* InDecisionMakingBehavior);
 	~CFlock();
 
 	void Update(double DeltaTime);
@@ -31,7 +31,7 @@ private:
 	ofVec2f CenterOfMass;
 
 	std::vector<CBoid *> Boids;
-	const std::vector<SWeightedBehavior>& WeightedBehaviors;
+	const std::vector<SWeightedBehavior*>& WeightedBehaviors;
 
 	CDecisionMakingBehavior* DecisionMakingBehavior;
 	CActionManager ActionManager;

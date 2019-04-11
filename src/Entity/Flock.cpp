@@ -6,7 +6,7 @@
 #include "../DecisionMaking/DecisionMakingBehavior.h"
 
 //=======================================================================================================================
-CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InFlockColor, CDecisionMakingBehavior* InDecisionMakingBehavior) :
+CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeightedBehaviors, const ofColor& InFlockColor, CDecisionMakingBehavior* InDecisionMakingBehavior) :
 	WeightedBehaviors(InWeightedBehaviors),
 	FlockColor(InFlockColor),
 	DecisionMakingBehavior(InDecisionMakingBehavior)
@@ -15,6 +15,11 @@ CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeighte
 	for (int i = 0; i < InFlockCount; i++)
 	{
 		Boids.push_back(new CBoid());
+	}
+
+	if (DecisionMakingBehavior)
+	{
+		ActionManager.ScheduleAction(DecisionMakingBehavior->GetAction());
 	}
 }
 
@@ -81,11 +86,11 @@ SBehaviorOutput CFlock::GetBehaviorOutput(const CBoid& InBoid)
 
 	for (auto WeightedBehavior : WeightedBehaviors)
 	{
-		if (WeightedBehavior.Behavior)
+		if (WeightedBehavior && WeightedBehavior->Behavior)
 		{
-			SBehaviorOutput BehaviorOutput = WeightedBehavior.Behavior->GetBehaviorOutput(InBoid);
-			ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior.Weight;
-			ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior.Weight;
+			SBehaviorOutput BehaviorOutput = WeightedBehavior->Behavior->GetBehaviorOutput(InBoid);
+			ReturnBehaviorOutput.Linear += BehaviorOutput.Linear * WeightedBehavior->Weight;
+			ReturnBehaviorOutput.Angular += BehaviorOutput.Angular * WeightedBehavior->Weight;
 			if (!BehaviorOutput.Dynamic)
 			{
 				ReturnBehaviorOutput.Dynamic = false;

@@ -41,10 +41,13 @@ void CActionManager::Update(double InDeltaTime)
 	// Check for Interrupts
 	for (auto PendingAction : PendingActions.get_container())
 	{
-		CAction* TopPriorityAction = ActiveActions.top();
-		if (TopPriorityAction != nullptr && TopPriorityAction->GetPriority() > PendingAction->GetPriority())
+		if (!ActiveActions.empty())
 		{
-			continue;
+			CAction* TopPriorityAction = ActiveActions.top();
+			if (TopPriorityAction != nullptr && TopPriorityAction->GetPriority() > PendingAction->GetPriority())
+			{
+				continue;
+			}
 		}
 
 		if (PendingAction->GetCanInterrupt())
@@ -68,15 +71,23 @@ void CActionManager::Update(double InDeltaTime)
 
 	for (auto PendingAction : PendingActions.get_container())
 	{
-		for (auto ActiveAction : ActiveActions.get_container())
+		if (ActiveActions.empty())
 		{
-			if (!ActiveAction->CanDoBoth(PendingAction))
-			{
-				continue;
-			}
-
 			ActionsToRemove.push_back(PendingAction);
-			ActionsToAdd.push_back(PendingAction);
+			ActiveActions.push(PendingAction);
+		}
+		else
+		{
+			for (auto ActiveAction : ActiveActions.get_container())
+			{
+				if (!ActiveAction->CanDoBoth(PendingAction))
+				{
+					continue;
+				}
+
+				ActionsToRemove.push_back(PendingAction);
+				ActionsToAdd.push_back(PendingAction);
+			}
 		}
 	}
 

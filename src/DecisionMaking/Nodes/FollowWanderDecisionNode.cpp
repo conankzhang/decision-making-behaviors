@@ -15,5 +15,5 @@ CFollowWanderDecisionNode::~CFollowWanderDecisionNode()
 //=======================================================================================================================
 bool CFollowWanderDecisionNode::IsTrue()
 {
-	return true;
+	return false;
 }
