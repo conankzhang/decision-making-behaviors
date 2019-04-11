@@ -27,7 +27,10 @@
     <ClCompile Include="src\Pathfinding\Pathfinding.cpp" />
     <ClCompile Include="src\Pathfinding\TiledDivisionScheme.cpp" />
     <ClCompile Include="src\DecisionMaking\Action.cpp" />
-    <ClCompile Include="src\DecisionMaking\CActionManager.cpp" />
+    <ClCompile Include="src\DecisionMaking\ActionManager.cpp" />
+    <ClCompile Include="src\DecisionMaking\ActionNode.cpp" />
+    <ClCompile Include="src\DecisionMaking\DecisionNode.cpp" />
+    <ClCompile Include="src\DecisionMaking\DecisionMakingBehavior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -58,8 +61,12 @@
     <ClInclude Include="src\Pathfinding\Obstacle.h" />
     <ClInclude Include="src\Pathfinding\Pathfinding.h" />
     <ClInclude Include="src\DecisionMaking\Action.h" />
-    <ClInclude Include="src\DecisionMaking\CActionManager.h" />
     <ClInclude Include="src\DecisionMaking\PriorityQueue.h" />
+    <ClInclude Include="src\DecisionMaking\ActionManager.h" />
+    <ClInclude Include="src\DecisionMaking\DecisionTreeNode.h" />
+    <ClInclude Include="src\DecisionMaking\ActionNode.h" />
+    <ClInclude Include="src\DecisionMaking\DecisionNode.h" />
+    <ClInclude Include="src\DecisionMaking\DecisionMakingBehavior.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

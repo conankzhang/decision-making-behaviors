@@ -180,7 +180,10 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\DecisionMaking\CActionManager.cpp" />
+    <ClCompile Include="src\DecisionMaking\DecisionMakingBehavior.cpp" />
+    <ClCompile Include="src\DecisionMaking\DecisionNode.cpp" />
+    <ClCompile Include="src\DecisionMaking\ActionNode.cpp" />
+    <ClCompile Include="src\DecisionMaking\ActionManager.cpp" />
     <ClCompile Include="src\DecisionMaking\Action.cpp" />
     <ClCompile Include="src\Behavior\basic-motion.cpp" />
     <ClCompile Include="src\Behavior\Behavior.cpp" />
@@ -205,8 +208,12 @@
     <ClCompile Include="src\Pathfinding\TiledDivisionScheme.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DecisionMaking\DecisionMakingBehavior.h" />
+    <ClInclude Include="src\DecisionMaking\DecisionNode.h" />
+    <ClInclude Include="src\DecisionMaking\ActionNode.h" />
+    <ClInclude Include="src\DecisionMaking\DecisionTreeNode.h" />
     <ClInclude Include="src\DecisionMaking\PriorityQueue.h" />
-    <ClInclude Include="src\DecisionMaking\CActionManager.h" />
+    <ClInclude Include="src\DecisionMaking\ActionManager.h" />
     <ClInclude Include="src\DecisionMaking\Action.h" />
     <ClInclude Include="src\Behavior\basic-motion.h" />
     <ClInclude Include="src\Behavior\Behavior.h" />
