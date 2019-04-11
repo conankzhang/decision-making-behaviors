@@ -8,7 +8,7 @@ public:
 	CDecisionNode(CDecisionTreeNode* InTrueNode, CDecisionTreeNode* InFalseNode);
 	~CDecisionNode();
 
-	virtual CDecisionTreeNode* MakeDecision();
+	CDecisionTreeNode* MakeDecision();
 
 private:
 	inline CDecisionTreeNode* GetBranch() { return IsTrue() ? TrueNode : FalseNode; }

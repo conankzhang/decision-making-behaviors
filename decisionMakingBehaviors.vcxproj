@@ -180,11 +180,14 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Actions\FollowAction.cpp" />
+    <ClCompile Include="src\DecisionMaking\Nodes\FollowWanderDecisionNode.cpp" />
+    <ClCompile Include="src\DecisionMaking\FollowWanderDecisionTree.cpp" />
     <ClCompile Include="src\DecisionMaking\DecisionMakingBehavior.cpp" />
     <ClCompile Include="src\DecisionMaking\DecisionNode.cpp" />
     <ClCompile Include="src\DecisionMaking\ActionNode.cpp" />
-    <ClCompile Include="src\DecisionMaking\ActionManager.cpp" />
-    <ClCompile Include="src\DecisionMaking\Action.cpp" />
+    <ClCompile Include="src\Actions\ActionManager.cpp" />
+    <ClCompile Include="src\Actions\Action.cpp" />
     <ClCompile Include="src\Behavior\basic-motion.cpp" />
     <ClCompile Include="src\Behavior\Behavior.cpp" />
     <ClCompile Include="src\Behavior\DynamicAlign.cpp" />
@@ -206,15 +209,19 @@
     <ClCompile Include="src\Pathfinding\Obstacle.cpp" />
     <ClCompile Include="src\Pathfinding\Pathfinding.cpp" />
     <ClCompile Include="src\Pathfinding\TiledDivisionScheme.cpp" />
+    <ClCompile Include="src\Actions\WanderAction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Actions\FollowAction.h" />
+    <ClInclude Include="src\DecisionMaking\Nodes\FollowWanderDecisionNode.h" />
+    <ClInclude Include="src\DecisionMaking\FollowWanderDecisionTree.h" />
     <ClInclude Include="src\DecisionMaking\DecisionMakingBehavior.h" />
     <ClInclude Include="src\DecisionMaking\DecisionNode.h" />
     <ClInclude Include="src\DecisionMaking\ActionNode.h" />
     <ClInclude Include="src\DecisionMaking\DecisionTreeNode.h" />
-    <ClInclude Include="src\DecisionMaking\PriorityQueue.h" />
-    <ClInclude Include="src\DecisionMaking\ActionManager.h" />
-    <ClInclude Include="src\DecisionMaking\Action.h" />
+    <ClInclude Include="src\Actions\PriorityQueue.h" />
+    <ClInclude Include="src\Actions\ActionManager.h" />
+    <ClInclude Include="src\Actions\Action.h" />
     <ClInclude Include="src\Behavior\basic-motion.h" />
     <ClInclude Include="src\Behavior\Behavior.h" />
     <ClInclude Include="src\Behavior\DynamicAlign.h" />
@@ -235,6 +242,7 @@
     <ClInclude Include="src\Pathfinding\Obstacle.h" />
     <ClInclude Include="src\Pathfinding\Pathfinding.h" />
     <ClInclude Include="src\Pathfinding\TiledDivisionScheme.h" />
+    <ClInclude Include="src\Actions\WanderAction.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

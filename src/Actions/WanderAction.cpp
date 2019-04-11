@@ -1,18 +1,17 @@
-#include "Action.h"
+#include "WanderAction.h"
 
 //=======================================================================================================================
-CAction::CAction() :
-	QueuedTime(0.0f),
-	ExpiryTime(0.0f),
-	Priority(0.0f),
-	CanInterrupt(false),
-	IsComplete(false)
+CWanderAction::CWanderAction()
 {
-
 }
 
 //=======================================================================================================================
-CAction::~CAction()
+CWanderAction::~CWanderAction()
+{
+}
+
+//=======================================================================================================================
+void CWanderAction::Execute()
 {
 
 }

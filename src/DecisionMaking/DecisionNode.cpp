@@ -9,6 +9,15 @@ CDecisionNode::CDecisionNode(CDecisionTreeNode* InTrueNode, CDecisionTreeNode* I
 
 CDecisionNode::~CDecisionNode()
 {
+	if (TrueNode)
+	{
+		delete TrueNode;
+	}
+
+	if (FalseNode)
+	{
+		delete FalseNode;
+	}
 }
 
 CDecisionTreeNode* CDecisionNode::MakeDecision()

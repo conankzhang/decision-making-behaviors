@@ -5,6 +5,7 @@ class CAction
 {
 public:
 	CAction();
+	CAction(double InExpiryTIme, double InPriority, bool InCanInterrupt);
 	~CAction();
 
 	inline double GetQueuedTime () const { return QueuedTime; }
@@ -17,7 +18,7 @@ public:
 	inline bool GetCanInterrupt() const { return CanInterrupt; }
 	inline bool GetIsComplete() const { return IsComplete; }
 
-	virtual bool CanDoBoth(CAction* InAction) = 0;
+	virtual bool CanDoBoth(CAction* InAction);
 	virtual void Execute() = 0;
 
 private:
