@@ -105,8 +105,8 @@ void ofApp::mousePressed(int x, int y, int button)
 void ofApp::CreateObstacles()
 {
 	Obstacles.push_back(new CObstacle(100.0f, 100.0f, 100.0f, 100.0f));
-	Obstacles.push_back(new CObstacle(300.0f, 300.0f, 100.0f, 500.0f));
-	Obstacles.push_back(new CObstacle(700.0f, 500.0f, 300.0f, 100.0f));
+	Obstacles.push_back(new CObstacle(300.0f, 300.0f, 100.0f, 300.0f));
+	Obstacles.push_back(new CObstacle(600.0f, 500.0f, 200.0f, 100.0f));
 }
 
 //--------------------------------------------------------------
