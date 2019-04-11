@@ -24,7 +24,7 @@ void ofApp::setup()
 	CreateObstacles();
 
 	Target.x = 0.0f;
-	Target.y = ofGetWindowHeight();
+	Target.y = 0.0f;
 
 	TargetSize = 10.0f;
 
