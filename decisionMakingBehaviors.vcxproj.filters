@@ -26,6 +26,8 @@
     <ClCompile Include="src\Pathfinding\Obstacle.cpp" />
     <ClCompile Include="src\Pathfinding\Pathfinding.cpp" />
     <ClCompile Include="src\Pathfinding\TiledDivisionScheme.cpp" />
+    <ClCompile Include="src\DecisionMaking\Action.cpp" />
+    <ClCompile Include="src\DecisionMaking\CActionManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -55,6 +57,9 @@
     <ClInclude Include="src\Pathfinding\Heuristic.h" />
     <ClInclude Include="src\Pathfinding\Obstacle.h" />
     <ClInclude Include="src\Pathfinding\Pathfinding.h" />
+    <ClInclude Include="src\DecisionMaking\Action.h" />
+    <ClInclude Include="src\DecisionMaking\CActionManager.h" />
+    <ClInclude Include="src\DecisionMaking\PriorityQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
