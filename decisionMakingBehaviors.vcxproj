@@ -182,7 +182,6 @@
   <ItemGroup>
     <ClCompile Include="src\Actions\FollowAction.cpp" />
     <ClCompile Include="src\DecisionMaking\Nodes\FollowWanderDecisionNode.cpp" />
-    <ClCompile Include="src\DecisionMaking\FollowWanderDecisionTree.cpp" />
     <ClCompile Include="src\DecisionMaking\DecisionMakingBehavior.cpp" />
     <ClCompile Include="src\DecisionMaking\DecisionNode.cpp" />
     <ClCompile Include="src\DecisionMaking\ActionNode.cpp" />
@@ -214,7 +213,6 @@
   <ItemGroup>
     <ClInclude Include="src\Actions\FollowAction.h" />
     <ClInclude Include="src\DecisionMaking\Nodes\FollowWanderDecisionNode.h" />
-    <ClInclude Include="src\DecisionMaking\FollowWanderDecisionTree.h" />
     <ClInclude Include="src\DecisionMaking\DecisionMakingBehavior.h" />
     <ClInclude Include="src\DecisionMaking\DecisionNode.h" />
     <ClInclude Include="src\DecisionMaking\ActionNode.h" />

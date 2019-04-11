@@ -28,4 +28,5 @@ struct SWeightedBehavior
 	float Weight;
 
 	SWeightedBehavior(CBehavior* InBehavior, float InWeight);
+	~SWeightedBehavior();
 };

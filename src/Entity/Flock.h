@@ -5,6 +5,7 @@
 #include "ofColor.h"
 
 #include <vector>
+#include "../Actions/ActionManager.h"
 
 class CBoid;
 class CDecisionMakingBehavior;
@@ -16,7 +17,7 @@ public:
 	CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InColor, CDecisionMakingBehavior* InDecisionMakingBehavior);
 	~CFlock();
 
-	void Update(float DeltaTime);
+	void Update(double DeltaTime);
 	void Draw() const;
 
 	const std::vector<CBoid *>* GetBoids() const { return &Boids; }
@@ -33,4 +34,5 @@ private:
 	const std::vector<SWeightedBehavior>& WeightedBehaviors;
 
 	CDecisionMakingBehavior* DecisionMakingBehavior;
+	CActionManager ActionManager;
 };

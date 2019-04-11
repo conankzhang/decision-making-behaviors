@@ -3,6 +3,8 @@
 #include "../Entity/Boid.h"
 #include "../Behavior/Behavior.h"
 
+#include "../DecisionMaking/DecisionMakingBehavior.h"
+
 //=======================================================================================================================
 CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior>& InWeightedBehaviors, const ofColor& InFlockColor, CDecisionMakingBehavior* InDecisionMakingBehavior) :
 	WeightedBehaviors(InWeightedBehaviors),
@@ -33,8 +35,9 @@ CFlock::~CFlock()
 }
 
 //=======================================================================================================================
-void CFlock::Update(float DeltaTime)
+void CFlock::Update(double DeltaTime)
 {
+	ActionManager.Update(DeltaTime);
 	UpdateCenterOfMass();
 	for (auto Boid : Boids)
 	{

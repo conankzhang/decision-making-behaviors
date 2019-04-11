@@ -16,3 +16,11 @@ SWeightedBehavior::SWeightedBehavior(CBehavior* InBehavior, float InWeight) :
 {
 
 }
+
+SWeightedBehavior::~SWeightedBehavior()
+{
+	if (Behavior)
+	{
+		delete Behavior;
+	}
+}

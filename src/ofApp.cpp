@@ -39,16 +39,13 @@ void ofApp::setup()
 	DivisionScheme = new CTiledDivisionScheme(ofGetWindowWidth(), ofGetWindowHeight(), 100.0f, 100.0f, Graph);
 	Heuristic = new CZeroEstimate(DivisionScheme);
 
-	CActionNode* FollowActionNode = new CActionNode(new CFollowAction());
-	CActionNode* WanderActionNode = new CActionNode(new CWanderAction());
+	CActionNode* FollowActionNode = new CActionNode(new CFollowAction(FlockBehaviors, Path, DivisionScheme, Target));
+	CActionNode* WanderActionNode = new CActionNode(new CWanderAction(FlockBehaviors));
 
 	CFollowWanderDecisionNode* Root = new CFollowWanderDecisionNode(FollowActionNode, WanderActionNode);
 	CDecisionMakingBehavior* DecisionTree = new CDecisionMakingBehavior(Root);
 
 	Flock = new CFlock(1, FlockBehaviors, ofColor::black, DecisionTree);
-
-	FlockBehaviors.push_back(SWeightedBehavior(new CDynamicPathFollow(Path, DivisionScheme, Target), 1));
-	FlockBehaviors.push_back(SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 }
 
 //=======================================================================================================================
