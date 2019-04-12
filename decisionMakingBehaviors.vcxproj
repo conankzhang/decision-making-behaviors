@@ -180,6 +180,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BehaviorTree\BehaviorTree.cpp" />
+    <ClCompile Include="src\BehaviorTree\BlackBoard.cpp" />
     <ClCompile Include="src\Actions\FollowAction.cpp" />
     <ClCompile Include="src\DecisionMaking\Nodes\FollowWanderDecisionNode.cpp" />
     <ClCompile Include="src\DecisionMaking\DecisionMakingBehavior.cpp" />
@@ -209,9 +211,14 @@
     <ClCompile Include="src\Pathfinding\Pathfinding.cpp" />
     <ClCompile Include="src\Pathfinding\TiledDivisionScheme.cpp" />
     <ClCompile Include="src\Actions\WanderAction.cpp" />
+    <ClCompile Include="src\BehaviorTree\Task.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tick.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BehaviorTree\BehaviorTree.h" />
+    <ClInclude Include="src\BehaviorTree\BlackBoard.h" />
     <ClInclude Include="src\Actions\FollowAction.h" />
+    <ClInclude Include="src\BehaviorTree\BlackBoardValue.h" />
     <ClInclude Include="src\DecisionMaking\Nodes\FollowWanderDecisionNode.h" />
     <ClInclude Include="src\DecisionMaking\DecisionMakingBehavior.h" />
     <ClInclude Include="src\DecisionMaking\DecisionNode.h" />
@@ -241,6 +248,8 @@
     <ClInclude Include="src\Pathfinding\Pathfinding.h" />
     <ClInclude Include="src\Pathfinding\TiledDivisionScheme.h" />
     <ClInclude Include="src\Actions\WanderAction.h" />
+    <ClInclude Include="src\BehaviorTree\Task.h" />
+    <ClInclude Include="src\BehaviorTree\Tick.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

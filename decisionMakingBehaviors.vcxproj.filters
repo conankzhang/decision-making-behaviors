@@ -34,6 +34,10 @@
     <ClCompile Include="src\Movement\DynamicSeparation.cpp" />
     <ClCompile Include="src\Movement\seek-steering.cpp" />
     <ClCompile Include="src\Movement\wander-steering.cpp" />
+    <ClCompile Include="src\BehaviorTree\Task.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tick.cpp" />
+    <ClCompile Include="src\BehaviorTree\BlackBoard.cpp" />
+    <ClCompile Include="src\BehaviorTree\BehaviorTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -73,6 +77,11 @@
     <ClInclude Include="src\Movement\DynamicSeparation.h" />
     <ClInclude Include="src\Movement\seek-steering.h" />
     <ClInclude Include="src\Movement\wander-steering.h" />
+    <ClInclude Include="src\BehaviorTree\Task.h" />
+    <ClInclude Include="src\BehaviorTree\Tick.h" />
+    <ClInclude Include="src\BehaviorTree\BlackBoard.h" />
+    <ClInclude Include="src\BehaviorTree\BehaviorTree.h" />
+    <ClInclude Include="src\BehaviorTree\BlackBoardValue.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
