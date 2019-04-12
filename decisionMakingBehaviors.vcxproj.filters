@@ -41,6 +41,7 @@
     <ClCompile Include="src\BehaviorTree\Selector.cpp" />
     <ClCompile Include="src\BehaviorTree\Sequencer.cpp" />
     <ClCompile Include="src\BehaviorTree\Inverter.cpp" />
+    <ClCompile Include="src\BehaviorTree\WanderTask.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -88,6 +89,7 @@
     <ClInclude Include="src\BehaviorTree\Selector.h" />
     <ClInclude Include="src\BehaviorTree\Sequencer.h" />
     <ClInclude Include="src\BehaviorTree\Inverter.h" />
+    <ClInclude Include="src\BehaviorTree\WanderTask.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

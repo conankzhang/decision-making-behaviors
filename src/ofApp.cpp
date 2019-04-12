@@ -27,6 +27,7 @@
 #include "BehaviorTree/Sequencer.h"
 #include "BehaviorTree/Inverter.h"
 #include "BehaviorTree/Selector.h"
+#include "BehaviorTree/WanderTask.h"
 
 //=======================================================================================================================
 void ofApp::setup()
@@ -56,7 +57,8 @@ void ofApp::setup()
 
 	CBlackBoard* BlackBoard = new CBlackBoard();
 
-	CSequencer* BehaviorTreeRoot = new CSequencer(0);
+	CSelector* BehaviorTreeRoot = new CSelector(0);
+	BehaviorTreeRoot->AddChild(new CWanderTask(1, new CWanderAction(MonsterBehaviors, Obstacles)));
 
 	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, BehaviorTreeRoot, BlackBoard);
 
@@ -70,6 +72,11 @@ void ofApp::update()
 	{
 		Flock->Update(ofGetLastFrameTime());
 	}
+
+	if (Monster)
+	{
+		Monster->Update(ofGetLastFrameTime());
+	}
 }
 
 //=======================================================================================================================
@@ -77,7 +84,7 @@ void ofApp::draw()
 {
 	ofSetColor(ofColor::black);
 
-	ofDrawBitmapString("Click anywhere to start pathfinding.", 50, 50);
+	ofDrawBitmapString("Avoid the green monster by clicking a location to run to!", 50, 50);
 
 	ofDrawRectangle(Target.x, Target.y, TargetSize, TargetSize);
 
