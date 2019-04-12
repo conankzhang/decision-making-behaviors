@@ -1,30 +1,30 @@
-#include "Selector.h"
+#include "Sequencer.h"
 
 #include "Tick.h"
 #include "BlackBoard.h"
 #include "BlackBoardValue.h"
 #include "BehaviorTree.h"
 
+
 //=======================================================================================================================
-CSelector::CSelector(int InTaskId) :
+CSequencer::CSequencer(int InTaskId) :
 	CTask(InTaskId)
 {
-
 }
 
 //=======================================================================================================================
-CSelector::~CSelector()
+CSequencer::~CSequencer()
 {
 }
 
 //=======================================================================================================================
-void CSelector::OnOpen(CTick* InTick)
+void CSequencer::OnOpen(CTick* InTick)
 {
 	InTick->GetBlackBoard()->SetValue("RunningChild", new CBlackBoardValue<size_t>(0), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 }
 
 //=======================================================================================================================
-EStatus CSelector::OnExecute(CTick* InTick)
+EStatus CSequencer::OnExecute(CTick* InTick)
 {
 	std::shared_ptr<CBlackBoardValueBase> RunningChildIdBase = InTick->GetBlackBoard()->GetValue("RunningChild", InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 	size_t RunningChildId = dynamic_cast<CBlackBoardValue<size_t>&>(*RunningChildIdBase).GetValue();
@@ -34,7 +34,7 @@ EStatus CSelector::OnExecute(CTick* InTick)
 		CTask* ChildTask = GetChildren()[ChildId];
 		EStatus ChildStatus = ChildTask->Run(InTick);
 
-		if (ChildStatus != EStatus::FAILURE)
+		if (ChildStatus != EStatus::SUCCESS)
 		{
 			if (ChildStatus == EStatus::RUNNING)
 			{
@@ -44,5 +44,5 @@ EStatus CSelector::OnExecute(CTick* InTick)
 		}
 	}
 
-	return EStatus::FAILURE;
+	return EStatus::SUCCESS;
 }

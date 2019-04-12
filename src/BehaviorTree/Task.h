@@ -18,7 +18,7 @@ enum class EStatus
 class CTask
 {
 public:
-	CTask();
+	CTask(int InTaskId);
 	~CTask();
 
 	EStatus Run(CTick* InTick);

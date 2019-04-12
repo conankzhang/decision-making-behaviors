@@ -3,14 +3,13 @@
 #include "Task.h"
 
 //=======================================================================================================================
-class CSelector : public CTask
+class CSequencer : public CTask
 {
 public:
-	CSelector(int InTaskId);
-	~CSelector();
+	CSequencer(int InTaskId);
+	~CSequencer();
 
 protected:
 	virtual void OnOpen(CTick* InTick) override;
 	virtual EStatus OnExecute(CTick* InTick) override;
 };
-

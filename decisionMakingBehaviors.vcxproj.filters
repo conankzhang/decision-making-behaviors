@@ -39,6 +39,7 @@
     <ClCompile Include="src\BehaviorTree\BlackBoard.cpp" />
     <ClCompile Include="src\BehaviorTree\BehaviorTree.cpp" />
     <ClCompile Include="src\BehaviorTree\Selector.cpp" />
+    <ClCompile Include="src\BehaviorTree\Sequencer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -84,6 +85,7 @@
     <ClInclude Include="src\BehaviorTree\BehaviorTree.h" />
     <ClInclude Include="src\BehaviorTree\BlackBoardValue.h" />
     <ClInclude Include="src\BehaviorTree\Selector.h" />
+    <ClInclude Include="src\BehaviorTree\Sequencer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
