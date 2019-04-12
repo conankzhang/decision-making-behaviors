@@ -9,9 +9,9 @@
 #include "../Actions/Action.h"
 
 //=======================================================================================================================
-CBehaviorTree::CBehaviorTree(int InTreeId, CTask* InRoot, CBlackBoard* InBlackBoard) :
+CBehaviorTree::CBehaviorTree(int InTreeId, CTask* InRootTask, CBlackBoard* InBlackBoard) :
 	TreeId(InTreeId),
-	Root(InRoot),
+	RootTask(InRootTask),
 	BlackBoard(InBlackBoard)
 {
 
@@ -26,7 +26,7 @@ CBehaviorTree::~CBehaviorTree()
 CAction* CBehaviorTree::GetAction()
 {
 	CTick* Tick = new CTick(this, BlackBoard);
-	Root->Run(Tick);
+	RootTask->Run(Tick);
 
 	std::shared_ptr<CBlackBoardValueBase> ActionBase = Tick->GetBlackBoard()->GetValue("Action");
 	return dynamic_cast<CBlackBoardValue<CAction*>&>(*ActionBase).GetValue();

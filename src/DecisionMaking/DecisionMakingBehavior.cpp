@@ -3,12 +3,20 @@
 #include "DecisionTreeNode.h"
 #include "ActionNode.h"
 
+//=======================================================================================================================
+CDecisionMakingBehavior::CDecisionMakingBehavior()
+{
+
+}
+
+//=======================================================================================================================
 CDecisionMakingBehavior::CDecisionMakingBehavior(CDecisionTreeNode* InRoot) :
 	Root(InRoot)
 {
 
 }
 
+//=======================================================================================================================
 CDecisionMakingBehavior::~CDecisionMakingBehavior()
 {
 	if (Root)
@@ -17,6 +25,7 @@ CDecisionMakingBehavior::~CDecisionMakingBehavior()
 	}
 }
 
+//=======================================================================================================================
 CAction* CDecisionMakingBehavior::GetAction()
 {
 	if (!Root)

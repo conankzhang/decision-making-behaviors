@@ -22,6 +22,8 @@
 #include "Actions/FollowAction.h"
 #include "Actions/WanderAction.h"
 
+#include "BehaviorTree/BehaviorTree.h"
+
 //=======================================================================================================================
 void ofApp::setup()
 {
@@ -47,6 +49,9 @@ void ofApp::setup()
 
 	Flock = new CFlock(1, FlockBehaviors, ofColor::black, DecisionTree);
 	Root->SetFlock(Flock);
+
+	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, nullptr, nullptr);
+	Monster = new CFlock(1, MonsterBehaviors, ofColor::green, DecisionTree);
 }
 
 //=======================================================================================================================

@@ -45,6 +45,9 @@ private:
 	CFlock* Flock;
 	std::vector<SWeightedBehavior*> FlockBehaviors;
 
+	CFlock* Monster;
+	std::vector<SWeightedBehavior*> MonsterBehaviors;
+
 	CDivisionScheme* DivisionScheme;
 	CDirectedWeightedGraph* Graph;
 	CHeuristic* Heuristic;
