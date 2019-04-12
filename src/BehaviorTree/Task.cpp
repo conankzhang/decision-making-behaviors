@@ -30,14 +30,14 @@ EStatus CTask::Run(CTick* InTick)
 		Open(InTick);
 	}
 
-	EStatus eStatus = Execute(InTick);
-	if (eStatus != EStatus::RUNNING)
+	EStatus TaskStatus = Execute(InTick);
+	if (TaskStatus != EStatus::RUNNING)
 	{
 		Close(InTick);
 	}
 
 	Exit(InTick);
-	return eStatus;
+	return TaskStatus;
 }
 
 //=======================================================================================================================
