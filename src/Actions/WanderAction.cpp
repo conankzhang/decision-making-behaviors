@@ -4,7 +4,7 @@
 
 //=======================================================================================================================
 CWanderAction::CWanderAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors, const std::vector<CObstacle*>& InObstacles) :
-	CAction(5.0, 5.0, false),
+	CAction(5.0, 5.0, true),
 	WeightedBehaviors(InWeightedBehaviors),
 	Obstacles(InObstacles)
 {

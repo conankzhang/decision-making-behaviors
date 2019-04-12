@@ -48,4 +48,5 @@ private:
 	CActionManager ActionManager;
 
 	EBehavior Behavior;
+	bool bIsMonster;
 };

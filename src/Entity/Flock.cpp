@@ -4,12 +4,14 @@
 #include "../Movement/Behavior.h"
 
 #include "../DecisionMaking/DecisionMakingBehavior.h"
+#include "../BehaviorTree/BehaviorTree.h"
 
 //=======================================================================================================================
 CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeightedBehaviors, const ofColor& InColor, CDecisionMakingBehavior* InDecisionMakingBehavior, const ofVec2f& InInitialPosition) :
 	WeightedBehaviors(InWeightedBehaviors),
 	FlockColor(InColor),
-	DecisionMakingBehavior(InDecisionMakingBehavior)
+	DecisionMakingBehavior(InDecisionMakingBehavior),
+	bIsMonster(false)
 {
 	Boids.reserve(InFlockCount);
 	for (int i = 0; i < InFlockCount; i++)
@@ -17,7 +19,15 @@ CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeight
 		Boids.push_back(new CBoid(this, InInitialPosition));
 	}
 
-	SetBehavior(EBehavior::WANDER);
+	if (static_cast<CBehaviorTree*>(DecisionMakingBehavior))
+	{
+		bIsMonster = true;
+	}
+
+	if (!bIsMonster)
+	{
+		SetBehavior(EBehavior::WANDER);
+	}
 }
 
 //=======================================================================================================================
@@ -39,6 +49,11 @@ CFlock::~CFlock()
 //=======================================================================================================================
 void CFlock::Update(double DeltaTime)
 {
+	if (bIsMonster && DecisionMakingBehavior)
+	{
+		ActionManager.ScheduleAction(DecisionMakingBehavior->GetAction());
+	}
+
 	ActionManager.Update(DeltaTime);
 	UpdateCenterOfMass();
 	for (auto Boid : Boids)

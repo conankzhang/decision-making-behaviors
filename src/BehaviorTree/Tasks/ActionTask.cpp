@@ -1,11 +1,11 @@
 #include "ActionTask.h"
 
-#include "Tick.h"
-#include "BlackBoard.h"
-#include "BlackBoardValue.h"
-#include "BehaviorTree.h"
+#include "../Tick.h"
+#include "../BlackBoard.h"
+#include "../BlackBoardValue.h"
+#include "../BehaviorTree.h"
 
-#include "../Actions/WanderAction.h"
+#include "../../Actions/WanderAction.h"
 
 //=======================================================================================================================
 CActionTask::CActionTask(size_t InTaskId, CAction* InAction) :

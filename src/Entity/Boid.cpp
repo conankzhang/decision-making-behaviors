@@ -121,7 +121,7 @@ void CBoid::Draw(const ofColor& BoidColor) const
 	if(BoidColor == ofColor::green)
 	{
 		ofNoFill();
-		ofDrawCircle(Transform.Position, Size * 10);
+		ofDrawCircle(Transform.Position, Size * 25);
 		ofFill();
 	}
 }

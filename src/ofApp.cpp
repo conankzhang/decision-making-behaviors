@@ -24,10 +24,11 @@
 
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackBoard.h"
-#include "BehaviorTree/Sequencer.h"
-#include "BehaviorTree/Inverter.h"
-#include "BehaviorTree/Selector.h"
-#include "BehaviorTree/ActionTask.h"
+#include "BehaviorTree/Tasks/Sequencer.h"
+#include "BehaviorTree/Tasks/Inverter.h"
+#include "BehaviorTree/Tasks/Selector.h"
+#include "BehaviorTree/Tasks/ActionTask.h"
+#include "BehaviorTree/Tasks/CanSmellCharacterTask.h"
 
 //=======================================================================================================================
 void ofApp::setup()
@@ -61,13 +62,16 @@ void ofApp::setup()
 
 	CSequencer* FollowSequence = new CSequencer(1);
 	BehaviorTreeRoot->AddChild(FollowSequence);
-	BehaviorTreeRoot->AddChild(new CActionTask(1, new CWanderAction(MonsterBehaviors, Obstacles)));
+	BehaviorTreeRoot->AddChild(new CActionTask(2, new CWanderAction(MonsterBehaviors, Obstacles)));
 
-	FollowSequence->AddChild(new CActionTask(1, new CFollowAction(MonsterBehaviors, MonsterPath, DivisionScheme, Target)));
+	CCanSmellCharacterTask* CanSmellTask = new CCanSmellCharacterTask(3, Character);
+	FollowSequence->AddChild(CanSmellTask);
+	FollowSequence->AddChild(new CActionTask(4, new CFollowAction(MonsterBehaviors, MonsterPath, DivisionScheme, Target)));
 
 	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, BehaviorTreeRoot, BlackBoard);
 
 	Monster = new CFlock(1, MonsterBehaviors, ofColor::green, BehaviorTree, ofVec2f(ofGetWindowWidth() - 50.0f, 50.0f));
+	CanSmellTask->SetMonster(Monster);
 }
 
 //=======================================================================================================================
