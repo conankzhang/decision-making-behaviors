@@ -110,11 +110,19 @@ void CBoid::Draw(const ofColor& BoidColor) const
 	ofSetColor(BoidColor);
 
 	ofDrawCircle(Transform.Position, Size);
+
 	DrawBeak();
 
 	for (auto BreadCrumb : BreadCrumbs)
 	{
 		BreadCrumb->Draw(BoidColor);
+	}
+
+	if(BoidColor == ofColor::green)
+	{
+		ofNoFill();
+		ofDrawCircle(Transform.Position, Size * 10);
+		ofFill();
 	}
 }
 

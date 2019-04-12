@@ -27,7 +27,7 @@
 #include "BehaviorTree/Sequencer.h"
 #include "BehaviorTree/Inverter.h"
 #include "BehaviorTree/Selector.h"
-#include "BehaviorTree/WanderTask.h"
+#include "BehaviorTree/ActionTask.h"
 
 //=======================================================================================================================
 void ofApp::setup()
@@ -46,19 +46,24 @@ void ofApp::setup()
 	DivisionScheme = new CTiledDivisionScheme(ofGetWindowWidth(), ofGetWindowHeight(), 100.0f, 100.0f, Graph);
 	Heuristic = new CZeroEstimate(DivisionScheme);
 
-	CActionNode* FollowActionNode = new CActionNode(new CFollowAction(FlockBehaviors, Path, DivisionScheme, Target));
-	CActionNode* WanderActionNode = new CActionNode(new CWanderAction(FlockBehaviors, Obstacles));
+	CActionNode* FollowActionNode = new CActionNode(new CFollowAction(CharacterBehaviors, CharacterPath, DivisionScheme, Target));
+	CActionNode* WanderActionNode = new CActionNode(new CWanderAction(CharacterBehaviors, Obstacles));
 
 	CFollowWanderDecisionNode* DecisionTreeRoot = new CFollowWanderDecisionNode(FollowActionNode, WanderActionNode);
 	CDecisionMakingBehavior* DecisionTree = new CDecisionMakingBehavior(DecisionTreeRoot);
 
-	Flock = new CFlock(1, FlockBehaviors, ofColor::black, DecisionTree, ofVec2f(50.0f, ofGetWindowHeight() - 50.0f));
-	DecisionTreeRoot->SetFlock(Flock);
+	Character = new CFlock(1, CharacterBehaviors, ofColor::black, DecisionTree, ofVec2f(50.0f, ofGetWindowHeight() - 50.0f));
+	DecisionTreeRoot->SetFlock(Character);
 
 	CBlackBoard* BlackBoard = new CBlackBoard();
 
 	CSelector* BehaviorTreeRoot = new CSelector(0);
-	BehaviorTreeRoot->AddChild(new CWanderTask(1, new CWanderAction(MonsterBehaviors, Obstacles)));
+
+	CSequencer* FollowSequence = new CSequencer(1);
+	BehaviorTreeRoot->AddChild(FollowSequence);
+	BehaviorTreeRoot->AddChild(new CActionTask(1, new CWanderAction(MonsterBehaviors, Obstacles)));
+
+	FollowSequence->AddChild(new CActionTask(1, new CFollowAction(MonsterBehaviors, MonsterPath, DivisionScheme, Target)));
 
 	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, BehaviorTreeRoot, BlackBoard);
 
@@ -68,9 +73,9 @@ void ofApp::setup()
 //=======================================================================================================================
 void ofApp::update()
 {
-	if (Flock)
+	if (Character)
 	{
-		Flock->Update(ofGetLastFrameTime());
+		Character->Update(ofGetLastFrameTime());
 	}
 
 	if (Monster)
@@ -96,9 +101,9 @@ void ofApp::draw()
 		}
 	}
 
-	if (Flock)
+	if (Character)
 	{
-		Flock->Draw();
+		Character->Draw();
 	}
 
 	if (Monster)
@@ -130,13 +135,13 @@ void ofApp::mousePressed(int x, int y, int button)
 
 	Target = ClickPosition;
 
-	if (DivisionScheme && Flock)
+	if (DivisionScheme && Character)
 	{
-		int StartNode = DivisionScheme->Quantize(Flock->GetCenterOfMass());
+		int StartNode = DivisionScheme->Quantize(Character->GetCenterOfMass());
 		int GoalNode = DivisionScheme->Quantize(Target);
 
-		Pathfinding::FindPath(StartNode, GoalNode, Graph, Heuristic, Path);
-		Flock->SetBehavior(EBehavior::FOLLOW);
+		Pathfinding::FindPath(StartNode, GoalNode, Graph, Heuristic, CharacterPath);
+		Character->SetBehavior(EBehavior::FOLLOW);
 	}
 }
 

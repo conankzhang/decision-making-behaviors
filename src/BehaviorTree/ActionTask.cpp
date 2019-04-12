@@ -1,4 +1,4 @@
-#include "WanderTask.h"
+#include "ActionTask.h"
 
 #include "Tick.h"
 #include "BlackBoard.h"
@@ -8,7 +8,7 @@
 #include "../Actions/WanderAction.h"
 
 //=======================================================================================================================
-CWanderTask::CWanderTask(size_t InTaskId, CAction* InAction) :
+CActionTask::CActionTask(size_t InTaskId, CAction* InAction) :
 	CTask(InTaskId),
 	Action(InAction)
 {
@@ -16,12 +16,12 @@ CWanderTask::CWanderTask(size_t InTaskId, CAction* InAction) :
 }
 
 //=======================================================================================================================
-CWanderTask::~CWanderTask()
+CActionTask::~CActionTask()
 {
 }
 
 //=======================================================================================================================
-EStatus CWanderTask::OnExecute(CTick* InTick)
+EStatus CActionTask::OnExecute(CTick* InTick)
 {
 	InTick->GetBlackBoard()->SetValue("Action", new CBlackBoardValue<CAction*>(Action));
 

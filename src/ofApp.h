@@ -42,17 +42,18 @@ private:
 	float TargetSize;
 	ofVec2f Target;
 
-	CFlock* Flock;
-	std::vector<SWeightedBehavior*> FlockBehaviors;
+	CFlock* Character;
+	std::vector<SWeightedBehavior*> CharacterBehaviors;
+	std::stack<const CDirectedWeightedEdge*> CharacterPath;
+
 
 	CFlock* Monster;
 	std::vector<SWeightedBehavior*> MonsterBehaviors;
+	std::stack<const CDirectedWeightedEdge*> MonsterPath;
 
 	CDivisionScheme* DivisionScheme;
 	CDirectedWeightedGraph* Graph;
 	CHeuristic* Heuristic;
-
-	std::stack<const CDirectedWeightedEdge*> Path;
 
 	std::vector<CObstacle*> Obstacles;
 };

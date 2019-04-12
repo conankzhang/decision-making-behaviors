@@ -1,16 +1,15 @@
 #pragma once
 
 #include "Task.h"
-#include <memory>
 
 class CAction;
 
 //=======================================================================================================================
-class CWanderTask : public CTask
+class CActionTask : public CTask
 {
 public:
-	CWanderTask(size_t InTaskId, CAction* InAction);
-	~CWanderTask();
+	CActionTask(size_t InTaskId, CAction* InAction);
+	~CActionTask();
 
 protected:
 	virtual EStatus OnExecute(CTick* InTick) override;
