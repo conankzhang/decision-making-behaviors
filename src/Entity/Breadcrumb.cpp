@@ -85,9 +85,9 @@ void CBreadcrumb::Update(double DeltaTime)
 }
 
 //=======================================================================================================================
-void CBreadcrumb::Draw() const
+void CBreadcrumb::Draw(const ofColor& InColor) const
 {
-	ofSetColor(Color);
+	ofSetColor(InColor);
 
 	ofDrawCircle(Position, Size);
 }

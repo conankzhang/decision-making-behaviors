@@ -15,7 +15,7 @@ public:
 	~CBreadcrumb();
 
 	void Update(double DeltaTime);
-	void Draw() const;
+	void Draw(const ofColor& InColor) const;
 
 	inline bool GetIsAlive() { return IsAlive; }
 

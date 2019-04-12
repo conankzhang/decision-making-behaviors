@@ -114,7 +114,7 @@ void CBoid::Draw(const ofColor& BoidColor) const
 
 	for (auto BreadCrumb : BreadCrumbs)
 	{
-		BreadCrumb->Draw();
+		BreadCrumb->Draw(BoidColor);
 	}
 }
 
