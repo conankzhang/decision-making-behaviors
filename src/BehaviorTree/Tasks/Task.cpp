@@ -1,10 +1,10 @@
 #include "Task.h"
 
-#include "Tick.h"
-#include "BlackBoard.h"
-#include "BehaviorTree.h"
+#include "../Tick.h"
+#include "../BlackBoard.h"
+#include "../BehaviorTree.h"
 
-#include "BlackBoardValue.h"
+#include "../BlackBoardValue.h"
 
 //=======================================================================================================================
 CTask::CTask(size_t InTaskId) :

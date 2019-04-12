@@ -34,14 +34,14 @@
     <ClCompile Include="src\Movement\DynamicSeparation.cpp" />
     <ClCompile Include="src\Movement\seek-steering.cpp" />
     <ClCompile Include="src\Movement\wander-steering.cpp" />
-    <ClCompile Include="src\BehaviorTree\Task.cpp" />
     <ClCompile Include="src\BehaviorTree\Tick.cpp" />
     <ClCompile Include="src\BehaviorTree\BlackBoard.cpp" />
     <ClCompile Include="src\BehaviorTree\BehaviorTree.cpp" />
-    <ClCompile Include="src\BehaviorTree\Selector.cpp" />
-    <ClCompile Include="src\BehaviorTree\Sequencer.cpp" />
-    <ClCompile Include="src\BehaviorTree\Inverter.cpp" />
-    <ClCompile Include="src\BehaviorTree\ActionTask.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\ActionTask.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\Inverter.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\Selector.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\Sequencer.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\Task.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -81,15 +81,15 @@
     <ClInclude Include="src\Movement\DynamicSeparation.h" />
     <ClInclude Include="src\Movement\seek-steering.h" />
     <ClInclude Include="src\Movement\wander-steering.h" />
-    <ClInclude Include="src\BehaviorTree\Task.h" />
     <ClInclude Include="src\BehaviorTree\Tick.h" />
     <ClInclude Include="src\BehaviorTree\BlackBoard.h" />
     <ClInclude Include="src\BehaviorTree\BehaviorTree.h" />
     <ClInclude Include="src\BehaviorTree\BlackBoardValue.h" />
-    <ClInclude Include="src\BehaviorTree\Selector.h" />
-    <ClInclude Include="src\BehaviorTree\Sequencer.h" />
-    <ClInclude Include="src\BehaviorTree\Inverter.h" />
-    <ClInclude Include="src\BehaviorTree\ActionTask.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\ActionTask.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\Inverter.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\Selector.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\Sequencer.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\Task.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

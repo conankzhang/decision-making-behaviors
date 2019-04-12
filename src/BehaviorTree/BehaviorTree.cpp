@@ -1,11 +1,11 @@
 #include "BehaviorTree.h"
 
 #include "Tick.h"
-#include "Task.h"
 
 #include "BlackBoard.h"
 #include "BlackBoardValue.h"
 
+#include "Tasks/Task.h"
 #include "../Actions/Action.h"
 
 //=======================================================================================================================

@@ -1,9 +1,9 @@
 #include "Sequencer.h"
 
-#include "Tick.h"
-#include "BlackBoard.h"
-#include "BlackBoardValue.h"
-#include "BehaviorTree.h"
+#include "../Tick.h"
+#include "../BlackBoard.h"
+#include "../BlackBoardValue.h"
+#include "../BehaviorTree.h"
 
 
 //=======================================================================================================================

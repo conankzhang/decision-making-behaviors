@@ -180,10 +180,10 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\BehaviorTree\ActionTask.cpp" />
-    <ClCompile Include="src\BehaviorTree\Inverter.cpp" />
-    <ClCompile Include="src\BehaviorTree\Sequencer.cpp" />
-    <ClCompile Include="src\BehaviorTree\Selector.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\ActionTask.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\Inverter.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\Sequencer.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\Selector.cpp" />
     <ClCompile Include="src\BehaviorTree\BehaviorTree.cpp" />
     <ClCompile Include="src\BehaviorTree\BlackBoard.cpp" />
     <ClCompile Include="src\Actions\FollowAction.cpp" />
@@ -215,14 +215,14 @@
     <ClCompile Include="src\Pathfinding\Pathfinding.cpp" />
     <ClCompile Include="src\Pathfinding\TiledDivisionScheme.cpp" />
     <ClCompile Include="src\Actions\WanderAction.cpp" />
-    <ClCompile Include="src\BehaviorTree\Task.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\Task.cpp" />
     <ClCompile Include="src\BehaviorTree\Tick.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BehaviorTree\ActionTask.h" />
-    <ClInclude Include="src\BehaviorTree\Inverter.h" />
-    <ClInclude Include="src\BehaviorTree\Sequencer.h" />
-    <ClInclude Include="src\BehaviorTree\Selector.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\ActionTask.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\Inverter.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\Sequencer.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\Selector.h" />
     <ClInclude Include="src\BehaviorTree\BehaviorTree.h" />
     <ClInclude Include="src\BehaviorTree\BlackBoard.h" />
     <ClInclude Include="src\Actions\FollowAction.h" />
@@ -256,7 +256,7 @@
     <ClInclude Include="src\Pathfinding\Pathfinding.h" />
     <ClInclude Include="src\Pathfinding\TiledDivisionScheme.h" />
     <ClInclude Include="src\Actions\WanderAction.h" />
-    <ClInclude Include="src\BehaviorTree\Task.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\Task.h" />
     <ClInclude Include="src\BehaviorTree\Tick.h" />
   </ItemGroup>
   <ItemGroup>
