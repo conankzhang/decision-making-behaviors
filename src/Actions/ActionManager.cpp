@@ -119,6 +119,12 @@ void CActionManager::Update(double InDeltaTime)
 		else
 		{
 			ActiveAction->Execute();
+
+			if (ActiveAction->GetIsComplete())
+			{
+				ActiveAction->SetIsComplete(false);
+				ActionsToRemove.push_back(ActiveAction);
+			}
 		}
 	}
 

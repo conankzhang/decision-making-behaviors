@@ -27,4 +27,5 @@ void CWanderAction::Execute()
 	WeightedBehaviors.push_back(new SWeightedBehavior(new cwander_steering(Obstacles), 1));
 
 	IsComplete = true;
+	QueuedTime = 0.0;
 }

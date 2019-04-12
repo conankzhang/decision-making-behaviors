@@ -31,4 +31,6 @@ void CFollowAction::Execute()
 	WeightedBehaviors.push_back(new SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 
 	IsComplete = true;
+	QueuedTime = 0.0;
+
 }
