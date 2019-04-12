@@ -40,7 +40,7 @@ void ofApp::setup()
 	Heuristic = new CZeroEstimate(DivisionScheme);
 
 	CActionNode* FollowActionNode = new CActionNode(new CFollowAction(FlockBehaviors, Path, DivisionScheme, Target));
-	CActionNode* WanderActionNode = new CActionNode(new CWanderAction(FlockBehaviors));
+	CActionNode* WanderActionNode = new CActionNode(new CWanderAction(FlockBehaviors, Obstacles));
 
 	CFollowWanderDecisionNode* Root = new CFollowWanderDecisionNode(FollowActionNode, WanderActionNode);
 	CDecisionMakingBehavior* DecisionTree = new CDecisionMakingBehavior(Root);

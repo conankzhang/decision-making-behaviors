@@ -32,6 +32,8 @@ public:
 	inline float GetMaxAngularSpeed() const { return Transform.MaxAngularSpeed; }
 	inline float GetSize() const { return Size; }
 
+	inline void ReverseVelocity() { Transform.Velocity *= -1; }
+
 private:
 	void UpdateBreadCrumbs(double DeltaTime);
 	void DrawBeak() const;

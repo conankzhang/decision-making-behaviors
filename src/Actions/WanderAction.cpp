@@ -3,9 +3,10 @@
 #include "../Behavior/wander-steering.h"
 
 //=======================================================================================================================
-CWanderAction::CWanderAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors) :
+CWanderAction::CWanderAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors, const std::vector<CObstacle*>& InObstacles) :
 	CAction(5.0, 5.0, false),
-	WeightedBehaviors(InWeightedBehaviors)
+	WeightedBehaviors(InWeightedBehaviors),
+	Obstacles(InObstacles)
 {
 
 }
@@ -23,7 +24,7 @@ void CWanderAction::Execute()
 		delete Behavior;
 	}
 	WeightedBehaviors.clear();
-	WeightedBehaviors.push_back(new SWeightedBehavior(new cwander_steering(), 1));
+	WeightedBehaviors.push_back(new SWeightedBehavior(new cwander_steering(Obstacles), 1));
 
 	IsComplete = true;
 }
