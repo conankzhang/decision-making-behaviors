@@ -46,6 +46,7 @@ void ofApp::setup()
 	CDecisionMakingBehavior* DecisionTree = new CDecisionMakingBehavior(Root);
 
 	Flock = new CFlock(1, FlockBehaviors, ofColor::black, DecisionTree);
+	Root->SetFlock(Flock);
 }
 
 //=======================================================================================================================
@@ -109,6 +110,7 @@ void ofApp::mousePressed(int x, int y, int button)
 		int GoalNode = DivisionScheme->Quantize(Target);
 
 		Pathfinding::FindPath(StartNode, GoalNode, Graph, Heuristic, Path);
+		Flock->SetBehavior(EBehavior::FOLLOW);
 	}
 }
 

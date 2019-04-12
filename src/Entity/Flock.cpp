@@ -17,10 +17,7 @@ CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeight
 		Boids.push_back(new CBoid());
 	}
 
-	if (DecisionMakingBehavior)
-	{
-		ActionManager.ScheduleAction(DecisionMakingBehavior->GetAction());
-	}
+	SetBehavior(EBehavior::WANDER);
 }
 
 //=======================================================================================================================
@@ -63,6 +60,17 @@ void CFlock::Draw() const
 		{
 			Boid->Draw(FlockColor);
 		}
+	}
+}
+
+//=======================================================================================================================
+void CFlock::SetBehavior(EBehavior InBehavior)
+{
+	Behavior = InBehavior;
+
+	if (DecisionMakingBehavior)
+	{
+		ActionManager.ScheduleAction(DecisionMakingBehavior->GetAction());
 	}
 }
 

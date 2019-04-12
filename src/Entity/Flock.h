@@ -11,6 +11,14 @@ class CBoid;
 class CDecisionMakingBehavior;
 
 //=======================================================================================================================
+enum class EBehavior
+{
+	NONE,
+	FOLLOW,
+	WANDER,
+};
+
+//=======================================================================================================================
 class CFlock
 {
 public:
@@ -22,6 +30,9 @@ public:
 
 	const std::vector<CBoid *>* GetBoids() const { return &Boids; }
 	const ofVec2f& GetCenterOfMass() const { return CenterOfMass; }
+
+	void SetBehavior(EBehavior InBehavior);
+	inline EBehavior GetBehavior() const { return Behavior; }
 
 private:
 	const ofColor& FlockColor;
@@ -35,4 +46,6 @@ private:
 
 	CDecisionMakingBehavior* DecisionMakingBehavior;
 	CActionManager ActionManager;
+
+	EBehavior Behavior;
 };
