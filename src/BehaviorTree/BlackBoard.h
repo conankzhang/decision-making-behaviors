@@ -5,6 +5,7 @@
 
 #include "BlackBoardValue.h"
 
+//=======================================================================================================================
 class CBlackBoard
 {
 public:
@@ -17,4 +18,3 @@ public:
 private:
 	std::unordered_map<std::string, std::shared_ptr<CBlackBoardValueBase>> test;
 };
-

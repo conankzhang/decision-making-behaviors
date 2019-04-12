@@ -1,14 +1,12 @@
 #pragma once
 
+#include "Task.h"
+
 //=======================================================================================================================
-class CBehaviorTree
+class CSelector : public CTask
 {
 public:
-	CBehaviorTree();
-	~CBehaviorTree();
-
-	inline int GetTreeId() const { return TreeId; }
-
-private:
-	int TreeId;
+	CSelector();
+	~CSelector();
 };
+

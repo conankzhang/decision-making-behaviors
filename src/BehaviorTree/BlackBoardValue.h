@@ -1,5 +1,6 @@
 #pragma once
 
+//=======================================================================================================================
 class CBlackBoardValueBase
 {
 public:
@@ -8,6 +9,7 @@ public:
 
 inline CBlackBoardValueBase::~CBlackBoardValueBase() {}
 
+//=======================================================================================================================
 template<class T>
 class CBlackBoardValue : public CBlackBoardValueBase
 {

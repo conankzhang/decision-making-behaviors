@@ -38,6 +38,7 @@
     <ClCompile Include="src\BehaviorTree\Tick.cpp" />
     <ClCompile Include="src\BehaviorTree\BlackBoard.cpp" />
     <ClCompile Include="src\BehaviorTree\BehaviorTree.cpp" />
+    <ClCompile Include="src\BehaviorTree\Selector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -82,6 +83,7 @@
     <ClInclude Include="src\BehaviorTree\BlackBoard.h" />
     <ClInclude Include="src\BehaviorTree\BehaviorTree.h" />
     <ClInclude Include="src\BehaviorTree\BlackBoardValue.h" />
+    <ClInclude Include="src\BehaviorTree\Selector.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
