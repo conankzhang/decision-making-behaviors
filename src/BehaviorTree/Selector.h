@@ -6,7 +6,7 @@
 class CSelector : public CTask
 {
 public:
-	CSelector(int InTaskId);
+	CSelector(size_t InTaskId);
 	~CSelector();
 
 protected:

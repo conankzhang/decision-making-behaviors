@@ -1,7 +1,7 @@
 #include "Inverter.h"
 
 //=======================================================================================================================
-CInverter::CInverter(int InTaskId) :
+CInverter::CInverter(size_t InTaskId) :
 	CTask(InTaskId)
 {
 }

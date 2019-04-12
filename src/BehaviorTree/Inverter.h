@@ -6,7 +6,7 @@
 class CInverter : public CTask
 {
 public:
-	CInverter(int InTaskId);
+	CInverter(size_t InTaskId);
 	~CInverter();
 
 protected:

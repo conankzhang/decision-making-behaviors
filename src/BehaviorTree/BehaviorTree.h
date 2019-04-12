@@ -10,14 +10,14 @@ class CAction;
 class CBehaviorTree : public CDecisionMakingBehavior
 {
 public:
-	CBehaviorTree(int InTreeId, CTask* InRootTask, CBlackBoard* InBlackBoard);
+	CBehaviorTree(size_t InTreeId, CTask* InRootTask, CBlackBoard* InBlackBoard);
 	~CBehaviorTree();
 
-	inline int GetTreeId() const { return TreeId; }
+	inline size_t GetTreeId() const { return TreeId; }
 	virtual CAction* GetAction() override;
 
 private:
-	int TreeId;
+	size_t TreeId;
 	CTask* RootTask;
 	CBlackBoard* BlackBoard;
 };

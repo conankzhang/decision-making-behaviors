@@ -6,7 +6,7 @@
 #include "BehaviorTree.h"
 
 //=======================================================================================================================
-CSelector::CSelector(int InTaskId) :
+CSelector::CSelector(size_t InTaskId) :
 	CTask(InTaskId)
 {
 

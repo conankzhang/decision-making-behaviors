@@ -10,7 +10,7 @@ enum class EStatus
 	SUCCESS,
 	FAILURE,
 	RUNNING,
-	ERROR
+	ERRORSTATUS
 };
 
 
@@ -18,7 +18,7 @@ enum class EStatus
 class CTask
 {
 public:
-	CTask(int InTaskId);
+	CTask(size_t InTaskId);
 	~CTask();
 
 	EStatus Run(CTick* InTick);
@@ -30,6 +30,7 @@ public:
 	EStatus Execute(CTick* InTick);
 
 	inline const std::vector<CTask*>& GetChildren() const { return Children; }
+	inline void AddChild(CTask* InTask) { Children.push_back(InTask); }
 
 protected:
 	virtual void OnEnter(CTick* InTick) {};
@@ -39,6 +40,6 @@ protected:
 	virtual EStatus OnExecute(CTick* InTick) { return EStatus::SUCCESS; }
 
 protected:
-	int TaskId;
+	size_t TaskId;
 	std::vector<CTask*> Children;
 };

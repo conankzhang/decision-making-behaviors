@@ -6,7 +6,7 @@
 class CSequencer : public CTask
 {
 public:
-	CSequencer(int InTaskId);
+	CSequencer(size_t InTaskId);
 	~CSequencer();
 
 protected:

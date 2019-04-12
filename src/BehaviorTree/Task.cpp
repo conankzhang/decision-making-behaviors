@@ -7,7 +7,7 @@
 #include "BlackBoardValue.h"
 
 //=======================================================================================================================
-CTask::CTask(int InTaskId) :
+CTask::CTask(size_t InTaskId) :
 	TaskId(InTaskId)
 {
 
@@ -23,7 +23,12 @@ EStatus CTask::Run(CTick* InTick)
 {
 	Enter(InTick);
 	std::shared_ptr<CBlackBoardValueBase> IsOpenValueBase = InTick->GetBlackBoard()->GetValue("IsOpen", InTick->GetBehaviorTree()->GetTreeId(), TaskId);
-	bool IsOpenValue = dynamic_cast<CBlackBoardValue<bool>&>(*IsOpenValueBase).GetValue();
+
+	bool IsOpenValue = false;
+	if (IsOpenValueBase)
+	{
+		IsOpenValue = dynamic_cast<CBlackBoardValue<bool>&>(*IsOpenValueBase).GetValue();
+	}
 
 	if (!IsOpenValue)
 	{

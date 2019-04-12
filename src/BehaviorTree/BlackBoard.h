@@ -2,7 +2,6 @@
 
 #include <unordered_map>
 #include <string>
-#include <vector>
 
 #include "BlackBoardValue.h"
 
@@ -13,17 +12,17 @@ public:
 	CBlackBoard();
 	~CBlackBoard();
 
-	void SetValue(std::string InKey, CBlackBoardValueBase* InValue, int InTreeId, int InTaskId);
-	std::shared_ptr<CBlackBoardValueBase> GetValue(std::string InKey, int InTreeId, int InTaskId);
+	void SetValue(std::string InKey, CBlackBoardValueBase* InValue, size_t InTreeId, size_t InTaskId);
+	std::shared_ptr<CBlackBoardValueBase> GetValue(std::string InKey, size_t InTreeId, size_t InTaskId);
 
-	void SetValue(std::string InKey, CBlackBoardValueBase* InValue, int InTreeId);
-	std::shared_ptr<CBlackBoardValueBase> GetValue(std::string InKey, int InTreeId);
+	void SetValue(std::string InKey, CBlackBoardValueBase* InValue, size_t InTreeId);
+	std::shared_ptr<CBlackBoardValueBase> GetValue(std::string InKey, size_t InTreeId);
 
 	void SetValue(std::string InKey, CBlackBoardValueBase* InValue);
 	std::shared_ptr<CBlackBoardValueBase> GetValue(std::string InKey);
 
 private:
-	std::vector<std::vector<std::unordered_map<std::string, std::shared_ptr<CBlackBoardValueBase>>>> NodeMap;
-	std::vector<std::unordered_map<std::string, std::shared_ptr<CBlackBoardValueBase>>> TreeMap;
+	std::unordered_map<size_t, std::unordered_map<size_t, std::unordered_map<std::string, std::shared_ptr<CBlackBoardValueBase>>>> NodeMap;
+	std::unordered_map<size_t, std::unordered_map<std::string, std::shared_ptr<CBlackBoardValueBase>>> TreeMap;
 	std::unordered_map<std::string, std::shared_ptr<CBlackBoardValueBase>> GlobalMap;
 };

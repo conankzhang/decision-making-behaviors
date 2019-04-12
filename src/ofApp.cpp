@@ -23,6 +23,10 @@
 #include "Actions/WanderAction.h"
 
 #include "BehaviorTree/BehaviorTree.h"
+#include "BehaviorTree/BlackBoard.h"
+#include "BehaviorTree/Sequencer.h"
+#include "BehaviorTree/Inverter.h"
+#include "BehaviorTree/Selector.h"
 
 //=======================================================================================================================
 void ofApp::setup()
@@ -44,14 +48,19 @@ void ofApp::setup()
 	CActionNode* FollowActionNode = new CActionNode(new CFollowAction(FlockBehaviors, Path, DivisionScheme, Target));
 	CActionNode* WanderActionNode = new CActionNode(new CWanderAction(FlockBehaviors, Obstacles));
 
-	CFollowWanderDecisionNode* Root = new CFollowWanderDecisionNode(FollowActionNode, WanderActionNode);
-	CDecisionMakingBehavior* DecisionTree = new CDecisionMakingBehavior(Root);
+	CFollowWanderDecisionNode* DecisionTreeRoot = new CFollowWanderDecisionNode(FollowActionNode, WanderActionNode);
+	CDecisionMakingBehavior* DecisionTree = new CDecisionMakingBehavior(DecisionTreeRoot);
 
 	Flock = new CFlock(1, FlockBehaviors, ofColor::black, DecisionTree, ofVec2f(50.0f, ofGetWindowHeight() - 50.0f));
-	Root->SetFlock(Flock);
+	DecisionTreeRoot->SetFlock(Flock);
 
-	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, nullptr, nullptr);
-	Monster = new CFlock(1, MonsterBehaviors, ofColor::green, DecisionTree, ofVec2f(ofGetWindowWidth() - 50.0f, 50.0f));
+	CBlackBoard* BlackBoard = new CBlackBoard();
+
+	CSequencer* BehaviorTreeRoot = new CSequencer(0);
+
+	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, BehaviorTreeRoot, BlackBoard);
+
+	Monster = new CFlock(1, MonsterBehaviors, ofColor::green, BehaviorTree, ofVec2f(ofGetWindowWidth() - 50.0f, 50.0f));
 }
 
 //=======================================================================================================================

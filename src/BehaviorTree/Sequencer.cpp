@@ -7,7 +7,7 @@
 
 
 //=======================================================================================================================
-CSequencer::CSequencer(int InTaskId) :
+CSequencer::CSequencer(size_t InTaskId) :
 	CTask(InTaskId)
 {
 }
