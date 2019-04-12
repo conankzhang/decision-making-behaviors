@@ -16,7 +16,7 @@ class CBoid
 {
 public:
 	CBoid();
-	CBoid(CFlock* InFlock);
+	CBoid(CFlock* InFlock, const ofVec2f& InInitialPosition);
 	CBoid(const SKinematic& InTransform, const ofColor& InColor, float InSize);
 	CBoid(const CBoid& Other);
 	CBoid(CBoid&& Other);

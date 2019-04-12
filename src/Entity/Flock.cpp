@@ -6,15 +6,15 @@
 #include "../DecisionMaking/DecisionMakingBehavior.h"
 
 //=======================================================================================================================
-CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeightedBehaviors, const ofColor& InFlockColor, CDecisionMakingBehavior* InDecisionMakingBehavior) :
+CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeightedBehaviors, const ofColor& InColor, CDecisionMakingBehavior* InDecisionMakingBehavior, const ofVec2f& InInitialPosition) :
 	WeightedBehaviors(InWeightedBehaviors),
-	FlockColor(InFlockColor),
+	FlockColor(InColor),
 	DecisionMakingBehavior(InDecisionMakingBehavior)
 {
 	Boids.reserve(InFlockCount);
 	for (int i = 0; i < InFlockCount; i++)
 	{
-		Boids.push_back(new CBoid(this));
+		Boids.push_back(new CBoid(this, InInitialPosition));
 	}
 
 	SetBehavior(EBehavior::WANDER);

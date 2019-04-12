@@ -47,11 +47,11 @@ void ofApp::setup()
 	CFollowWanderDecisionNode* Root = new CFollowWanderDecisionNode(FollowActionNode, WanderActionNode);
 	CDecisionMakingBehavior* DecisionTree = new CDecisionMakingBehavior(Root);
 
-	Flock = new CFlock(1, FlockBehaviors, ofColor::black, DecisionTree);
+	Flock = new CFlock(1, FlockBehaviors, ofColor::black, DecisionTree, ofVec2f(50.0f, ofGetWindowHeight() - 50.0f));
 	Root->SetFlock(Flock);
 
 	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, nullptr, nullptr);
-	Monster = new CFlock(1, MonsterBehaviors, ofColor::green, DecisionTree);
+	Monster = new CFlock(1, MonsterBehaviors, ofColor::green, DecisionTree, ofVec2f(ofGetWindowWidth() - 50.0f, 50.0f));
 }
 
 //=======================================================================================================================
@@ -83,6 +83,11 @@ void ofApp::draw()
 	if (Flock)
 	{
 		Flock->Draw();
+	}
+
+	if (Monster)
+	{
+		Monster->Draw();
 	}
 }
 

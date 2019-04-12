@@ -22,7 +22,7 @@ enum class EBehavior
 class CFlock
 {
 public:
-	CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeightedBehaviors, const ofColor& InColor, CDecisionMakingBehavior* InDecisionMakingBehavior);
+	CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeightedBehaviors, const ofColor& InColor, CDecisionMakingBehavior* InDecisionMakingBehavior, const ofVec2f& InInitialPosition);
 	~CFlock();
 
 	void Update(double DeltaTime);

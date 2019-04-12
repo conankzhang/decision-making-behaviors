@@ -54,15 +54,15 @@ CBoid::CBoid(CBoid&& Other) :
 }
 
 //=======================================================================================================================
-CBoid::CBoid(CFlock* InFlock) :
+CBoid::CBoid(CFlock* InFlock, const ofVec2f& InInitialPosition) :
 	Color(ofColor::black),
 	Size(10),
 	BreadcrumbDropDistance(50),
 	LastBreadcrumbPosition(Transform.Position),
 	Flock(InFlock)
 {
-	Transform.Position.x = Size;
-	Transform.Position.y = ofGetWindowHeight() - Size;
+	Transform.Position.x = InInitialPosition.x;
+	Transform.Position.y = InInitialPosition.y;
 }
 
 //=======================================================================================================================
