@@ -18,7 +18,7 @@ CSelector::~CSelector()
 //=======================================================================================================================
 void CSelector::OnOpen(CTick* InTick)
 {
-	InTick->GetBlackBoard()->SetValue("RunningChild", std::make_shared<CBlackBoardValue<bool>>(new CBlackBoardValue<bool>(true)), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
+	InTick->GetBlackBoard()->SetValue("RunningChild", new CBlackBoardValue<size_t>(0), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 }
 
 //=======================================================================================================================
@@ -36,7 +36,7 @@ EStatus CSelector::OnExecute(CTick* InTick)
 		{
 			if (ChildStatus == EStatus::RUNNING)
 			{
-				InTick->GetBlackBoard()->SetValue("RunningChild", std::make_shared<CBlackBoardValue<bool>>(new CBlackBoardValue<bool>(true)), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
+				InTick->GetBlackBoard()->SetValue("RunningChild", new CBlackBoardValue<size_t>(ChildId), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 			}
 			return ChildStatus;
 		}

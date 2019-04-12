@@ -55,7 +55,7 @@ void CTask::Open(CTick* InTick)
 {
 	OnOpen(InTick);
 	InTick->OpenTask(this);
-	InTick->GetBlackBoard()->SetValue("IsOpen", std::make_shared<CBlackBoardValue<bool>>(new CBlackBoardValue<bool>(true)), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
+	InTick->GetBlackBoard()->SetValue("IsOpen", new CBlackBoardValue<bool>(true), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 }
 
 //=======================================================================================================================
@@ -63,7 +63,7 @@ void CTask::Close(CTick* InTick)
 {
 	OnClose(InTick);
 	InTick->CloseTask(this);
-	InTick->GetBlackBoard()->SetValue("IsOpen", std::make_shared<CBlackBoardValue<bool>>(new CBlackBoardValue<bool>(false)), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
+	InTick->GetBlackBoard()->SetValue("IsOpen", new CBlackBoardValue<bool>(false), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 }
 
 //=======================================================================================================================

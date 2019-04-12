@@ -11,13 +11,13 @@ CBlackBoard::~CBlackBoard()
 }
 
 //=======================================================================================================================
-void CBlackBoard::SetValue(std::string InKey, const std::shared_ptr<CBlackBoardValueBase> InValue, int InTreeId, int InTaskId)
+void CBlackBoard::SetValue(std::string InKey, CBlackBoardValueBase* InValue, int InTreeId, int InTaskId)
 {
-
+	Map[InKey].reset(InValue);
 }
 
 //=======================================================================================================================
 std::shared_ptr<CBlackBoardValueBase> CBlackBoard::GetValue(std::string InKey, int InTreeId, int InTaskId)
 {
-	return nullptr;
+	return Map[InKey];
 }
