@@ -10,7 +10,8 @@ CBoid::CBoid() :
 	Color(ofColor::black),
 	Size(10),
 	BreadcrumbDropDistance(50),
-	LastBreadcrumbPosition(Transform.Position)
+	LastBreadcrumbPosition(Transform.Position),
+	Flock(nullptr)
 {
 	Transform.Position.x = Size;
 	Transform.Position.y = ofGetWindowHeight() - Size;
@@ -22,7 +23,8 @@ CBoid::CBoid(const SKinematic& InTransform, const ofColor& InColor, float InSize
 	Color(InColor),
 	Size(InSize),
 	BreadcrumbDropDistance(50),
-	LastBreadcrumbPosition(Transform.Position)
+	LastBreadcrumbPosition(Transform.Position),
+	Flock(nullptr)
 {
 
 }
@@ -33,7 +35,8 @@ CBoid::CBoid(const CBoid& Other) :
 	Color(Other.Color),
 	Size(Other.Size),
 	BreadcrumbDropDistance(Other.BreadcrumbDropDistance),
-	LastBreadcrumbPosition(Other.LastBreadcrumbPosition)
+	LastBreadcrumbPosition(Other.LastBreadcrumbPosition),
+	Flock(Other.Flock)
 {
 
 }
@@ -44,9 +47,22 @@ CBoid::CBoid(CBoid&& Other) :
 	Color(Other.Color),
 	Size(Other.Size),
 	BreadcrumbDropDistance(Other.BreadcrumbDropDistance),
-	LastBreadcrumbPosition(Other.LastBreadcrumbPosition)
+	LastBreadcrumbPosition(Other.LastBreadcrumbPosition),
+	Flock(Other.Flock)
 {
 
+}
+
+//=======================================================================================================================
+CBoid::CBoid(CFlock* InFlock) :
+	Color(ofColor::black),
+	Size(10),
+	BreadcrumbDropDistance(50),
+	LastBreadcrumbPosition(Transform.Position),
+	Flock(InFlock)
+{
+	Transform.Position.x = Size;
+	Transform.Position.y = ofGetWindowHeight() - Size;
 }
 
 //=======================================================================================================================
@@ -57,6 +73,7 @@ CBoid& CBoid::operator=(const CBoid& Other)
 	Size = Other.Size;
 	BreadcrumbDropDistance = Other.BreadcrumbDropDistance;
 	LastBreadcrumbPosition = Other.LastBreadcrumbPosition;
+	Flock = Other.Flock;
 
 	return *this;
 }
@@ -69,6 +86,7 @@ CBoid& CBoid::operator=(CBoid&& Other)
 	Size = Other.Size;
 	BreadcrumbDropDistance = Other.BreadcrumbDropDistance;
 	LastBreadcrumbPosition = Other.LastBreadcrumbPosition;
+	Flock = Other.Flock;
 
 	return *this;
 }

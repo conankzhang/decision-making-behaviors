@@ -7,13 +7,16 @@
 #include <vector>
 
 struct SBehaviorOutput;
+
 class CBreadcrumb;
+class CFlock;
 
 //=======================================================================================================================
 class CBoid
 {
 public:
 	CBoid();
+	CBoid(CFlock* InFlock);
 	CBoid(const SKinematic& InTransform, const ofColor& InColor, float InSize);
 	CBoid(const CBoid& Other);
 	CBoid(CBoid&& Other);
@@ -31,6 +34,7 @@ public:
 	inline float GetMaxSpeed() const { return Transform.MaxSpeed; }
 	inline float GetMaxAngularSpeed() const { return Transform.MaxAngularSpeed; }
 	inline float GetSize() const { return Size; }
+	inline CFlock* GetFlock() const { return Flock; }
 
 	inline void ReverseVelocity() { Transform.Velocity *= -1; }
 
@@ -48,4 +52,5 @@ private:
 
 	float BreadcrumbDropDistance;
 	ofVec2f LastBreadcrumbPosition;
+	CFlock* Flock;
 };

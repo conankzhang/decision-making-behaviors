@@ -3,6 +3,7 @@
 #include "../Pathfinding/DirectedWeightedGraph.h"
 #include "../Pathfinding/DivisionScheme.h"
 #include "../Entity/Boid.h"
+#include "../Entity/Flock.h"
 
 #include <stack>
 
@@ -42,6 +43,7 @@ SBehaviorOutput CDynamicPathFollow::GetBehaviorOutput(const CBoid& InBoid)
 			else
 			{
 				SeekSteering.SetTarget(ClickTarget);
+				InBoid.GetFlock()->SetBehavior(EBehavior::WANDER);
 			}
 		}
 	}

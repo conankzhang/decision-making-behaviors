@@ -14,7 +14,7 @@ CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeight
 	Boids.reserve(InFlockCount);
 	for (int i = 0; i < InFlockCount; i++)
 	{
-		Boids.push_back(new CBoid());
+		Boids.push_back(new CBoid(this));
 	}
 
 	SetBehavior(EBehavior::WANDER);

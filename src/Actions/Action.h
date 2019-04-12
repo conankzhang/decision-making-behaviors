@@ -16,7 +16,9 @@ public:
 	inline double GetPriority() const { return Priority; }
 
 	inline bool GetCanInterrupt() const { return CanInterrupt; }
+
 	inline bool GetIsComplete() const { return IsComplete; }
+	inline void SetIsComplete(bool InIsComplete) { IsComplete = InIsComplete; }
 
 	virtual bool CanDoBoth(CAction* InAction);
 	virtual void Execute() = 0;
