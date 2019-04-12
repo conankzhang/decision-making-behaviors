@@ -16,8 +16,8 @@ class CBlackBoardValue : public CBlackBoardValueBase
 public:
 	explicit CBlackBoardValue(const T& InValue) : Value(InValue) {}
 
-	const T& GetValue() const { return Value; }
-	void SetValue(const T& InValue) { Value = InValue; }
+	T GetValue() { return Value; }
+	void SetValue(T InValue) { Value = InValue; }
 
 private:
 	T Value;

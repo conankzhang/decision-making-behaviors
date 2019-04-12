@@ -21,7 +21,7 @@ public:
 	inline void SetIsComplete(bool InIsComplete) { IsComplete = InIsComplete; }
 
 	virtual bool CanDoBoth(CAction* InAction);
-	virtual void Execute() = 0;
+	virtual void Execute() {}
 
 protected:
 	double QueuedTime;
