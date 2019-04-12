@@ -1,7 +1,7 @@
 #include "Flock.h"
 
 #include "../Entity/Boid.h"
-#include "../Behavior/Behavior.h"
+#include "../Movement/Behavior.h"
 
 #include "../DecisionMaking/DecisionMakingBehavior.h"
 

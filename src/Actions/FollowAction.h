@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Action.h"
-#include "../Behavior/Behavior.h"
+#include "../Movement/Behavior.h"
 
 #include <vector>
 #include <stack>

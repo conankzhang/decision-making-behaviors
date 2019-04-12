@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Behavior/Behavior.h"
+#include "../Movement/Behavior.h"
 
 #include "ofColor.h"
 

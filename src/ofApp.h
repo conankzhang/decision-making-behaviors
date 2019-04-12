@@ -4,7 +4,7 @@
 
 #include <vector>
 #include <stack>
-#include "Behavior/Behavior.h"
+#include "Movement/Behavior.h"
 
 class CObstacle;
 class CFlock;

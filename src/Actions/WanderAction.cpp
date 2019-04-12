@@ -1,6 +1,6 @@
 #include "WanderAction.h"
 
-#include "../Behavior/wander-steering.h"
+#include "../Movement/wander-steering.h"
 
 //=======================================================================================================================
 CWanderAction::CWanderAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors, const std::vector<CObstacle*>& InObstacles) :

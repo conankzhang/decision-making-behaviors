@@ -1,7 +1,7 @@
 #include "FollowAction.h"
 
-#include "../Behavior/DynamicLookWhereYouAreGoing.h"
-#include "../Behavior/DynamicPathFollow.h"
+#include "../Movement/DynamicLookWhereYouAreGoing.h"
+#include "../Movement/DynamicPathFollow.h"
 
 //=======================================================================================================================
 CFollowAction::CFollowAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors, std::stack<const CDirectedWeightedEdge*>& InPath, CDivisionScheme* InDivisionScheme, const ofVec2f& InClickTarget) :

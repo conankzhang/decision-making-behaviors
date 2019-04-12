@@ -1,6 +1,6 @@
 #include "Kinematic.h"
 
-#include "../Behavior/Behavior.h"
+#include "../Movement/Behavior.h"
 
 //=======================================================================================================================
 SKinematic::SKinematic() :
