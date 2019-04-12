@@ -1,6 +1,6 @@
 #pragma once
 
-#include <list>
+#include <vector>
 
 class CTick;
 
@@ -29,16 +29,16 @@ public:
 	void Close(CTick* InTick);
 	EStatus Execute(CTick* InTick);
 
-	inline const std::list<CTask*>& GetChildren() const { return Children; }
+	inline const std::vector<CTask*>& GetChildren() const { return Children; }
 
-private:
+protected:
 	virtual void OnEnter(CTick* InTick) {};
 	virtual void OnExit(CTick* InTick) {};
 	virtual void OnOpen(CTick* InTick) {};
 	virtual void OnClose(CTick* InTick) {};
 	virtual EStatus OnExecute(CTick* InTick) { return EStatus::SUCCESS; }
 
-private:
+protected:
 	int TaskId;
-	std::list<CTask*> Children;
+	std::vector<CTask*> Children;
 };

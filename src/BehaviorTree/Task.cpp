@@ -20,7 +20,7 @@ CTask::~CTask()
 EStatus CTask::Run(CTick* InTick)
 {
 	Enter(InTick);
-	std::shared_ptr<CBlackBoardValueBase> IsOpenValueBase = InTick->GetBlackBoard()->Get("IsOpen", InTick->GetBehaviorTree()->GetTreeId(), TaskId);
+	std::shared_ptr<CBlackBoardValueBase> IsOpenValueBase = InTick->GetBlackBoard()->GetValue("IsOpen", InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 	bool IsOpenValue = dynamic_cast<CBlackBoardValue<bool>&>(*IsOpenValueBase).GetValue();
 
 	if (!IsOpenValue)
@@ -55,7 +55,7 @@ void CTask::Open(CTick* InTick)
 {
 	OnOpen(InTick);
 	InTick->OpenTask(this);
-	InTick->GetBlackBoard()->Set("IsOpen", std::make_shared<CBlackBoardValue<bool>>(new CBlackBoardValue<bool>(true)), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
+	InTick->GetBlackBoard()->SetValue("IsOpen", std::make_shared<CBlackBoardValue<bool>>(new CBlackBoardValue<bool>(true)), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 }
 
 //=======================================================================================================================
@@ -63,7 +63,7 @@ void CTask::Close(CTick* InTick)
 {
 	OnClose(InTick);
 	InTick->CloseTask(this);
-	InTick->GetBlackBoard()->Set("IsOpen", std::make_shared<CBlackBoardValue<bool>>(new CBlackBoardValue<bool>(false)), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
+	InTick->GetBlackBoard()->SetValue("IsOpen", std::make_shared<CBlackBoardValue<bool>>(new CBlackBoardValue<bool>(false)), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 }
 
 //=======================================================================================================================
