@@ -47,7 +47,8 @@ void ofApp::setup()
 	DivisionScheme = new CTiledDivisionScheme(ofGetWindowWidth(), ofGetWindowHeight(), 100.0f, 100.0f, Graph);
 	Heuristic = new CZeroEstimate(DivisionScheme);
 
-	CActionNode* FollowActionNode = new CActionNode(new CFollowAction(CharacterBehaviors, CharacterPath, DivisionScheme, Target));
+	CFollowAction* CharacterFollowAction = new CFollowAction(CharacterBehaviors, CharacterPath, DivisionScheme, Target, Graph, Heuristic);
+	CActionNode* FollowActionNode = new CActionNode(CharacterFollowAction);
 	CActionNode* WanderActionNode = new CActionNode(new CWanderAction(CharacterBehaviors, Obstacles));
 
 	CFollowWanderDecisionNode* DecisionTreeRoot = new CFollowWanderDecisionNode(FollowActionNode, WanderActionNode);
@@ -55,6 +56,7 @@ void ofApp::setup()
 
 	Character = new CFlock(1, CharacterBehaviors, ofColor::black, DecisionTree, ofVec2f(50.0f, ofGetWindowHeight() - 50.0f));
 	DecisionTreeRoot->SetFlock(Character);
+	CharacterFollowAction->SetCharacter(Character);
 
 	CBlackBoard* BlackBoard = new CBlackBoard();
 
@@ -66,12 +68,15 @@ void ofApp::setup()
 
 	CCanSmellCharacterTask* CanSmellTask = new CCanSmellCharacterTask(3, Character);
 	FollowSequence->AddChild(CanSmellTask);
-	FollowSequence->AddChild(new CActionTask(4, new CFollowAction(MonsterBehaviors, MonsterPath, DivisionScheme, Target)));
+	CFollowAction* MonsterFollowAction = new CFollowAction(MonsterBehaviors, MonsterPath, DivisionScheme, Target, Graph, Heuristic);
+	FollowSequence->AddChild(new CActionTask(4, MonsterFollowAction));
 
 	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, BehaviorTreeRoot, BlackBoard);
 
 	Monster = new CFlock(1, MonsterBehaviors, ofColor::green, BehaviorTree, ofVec2f(ofGetWindowWidth() - 50.0f, 50.0f));
 	CanSmellTask->SetMonster(Monster);
+	MonsterFollowAction->SetCharacter(Character);
+	MonsterFollowAction->SetMonster(Monster);
 }
 
 //=======================================================================================================================
@@ -139,12 +144,8 @@ void ofApp::mousePressed(int x, int y, int button)
 
 	Target = ClickPosition;
 
-	if (DivisionScheme && Character)
+	if (Character)
 	{
-		int StartNode = DivisionScheme->Quantize(Character->GetCenterOfMass());
-		int GoalNode = DivisionScheme->Quantize(Target);
-
-		Pathfinding::FindPath(StartNode, GoalNode, Graph, Heuristic, CharacterPath);
 		Character->SetBehavior(EBehavior::FOLLOW);
 	}
 }

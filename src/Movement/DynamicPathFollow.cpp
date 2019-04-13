@@ -10,7 +10,7 @@
 //=======================================================================================================================
 CDynamicPathFollow::CDynamicPathFollow(std::stack<const CDirectedWeightedEdge*>& InPath, CDivisionScheme* InDivisionScheme, const ofVec2f& InClickTarget) :
 	Path(InPath),
-	TargetRadius(25.0f),
+	TargetRadius(100.0f),
 	DivisionScheme(InDivisionScheme),
 	ClickTarget(InClickTarget)
 
