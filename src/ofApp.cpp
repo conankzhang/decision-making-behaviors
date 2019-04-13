@@ -64,25 +64,25 @@ void ofApp::setup()
 
 	CSelector* BehaviorTreeRoot = new CSelector(0);
 
-	CSequencer* FollowSequence = new CSequencer(1);
-	BehaviorTreeRoot->AddChild(FollowSequence);
+	CSequencer* SmellSequence = new CSequencer(1);
+	BehaviorTreeRoot->AddChild(SmellSequence);
 	BehaviorTreeRoot->AddChild(new CActionTask(2, new CWanderAction(MonsterBehaviors, Obstacles)));
 
 	CCanSmellCharacterTask* CanSmellTask = new CCanSmellCharacterTask(3, Character);
-	FollowSequence->AddChild(CanSmellTask);
+	SmellSequence->AddChild(CanSmellTask);
 
-	CInverter* Inverter = new CInverter(4);
+	CSelector* SmellSelector = new CSelector(4);
+	SmellSequence->AddChild(SmellSelector);
+
 	CSequencer* EatSequence = new CSequencer(5);
+	SmellSelector->AddChild(EatSequence);
 	CCanEatCharacerTask* CanEatTask = new CCanEatCharacerTask(6, Character);
 	EatSequence->AddChild(CanEatTask);
 	CResetAction* ResetAction = new CResetAction(MonsterBehaviors, Obstacles, Character);
 	EatSequence->AddChild(new CActionTask(7, ResetAction));
 
-	Inverter->AddChild(EatSequence);
-	FollowSequence->AddChild(Inverter);
-
 	CFollowAction* MonsterFollowAction = new CFollowAction(MonsterBehaviors, MonsterPath, DivisionScheme, Target, Graph, Heuristic);
-	FollowSequence->AddChild(new CActionTask(8, MonsterFollowAction));
+	SmellSelector->AddChild(new CActionTask(8, MonsterFollowAction));
 
 	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, BehaviorTreeRoot, BlackBoard);
 
