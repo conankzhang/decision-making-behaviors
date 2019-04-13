@@ -20,6 +20,15 @@ CBehaviorTree::CBehaviorTree(size_t InTreeId, CTask* InRootTask, CBlackBoard* In
 //=======================================================================================================================
 CBehaviorTree::~CBehaviorTree()
 {
+	if (RootTask)
+	{
+		delete RootTask;
+	}
+
+	if (BlackBoard)
+	{
+		delete BlackBoard;
+	}
 }
 
 //=======================================================================================================================
