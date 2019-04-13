@@ -44,6 +44,7 @@
     <ClCompile Include="src\BehaviorTree\Tasks\Task.cpp" />
     <ClCompile Include="src\BehaviorTree\Tasks\CanSmellCharacterTask.cpp" />
     <ClCompile Include="src\BehaviorTree\Tasks\CanEatCharacterTask.cpp" />
+    <ClCompile Include="src\Actions\ResetAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -94,6 +95,7 @@
     <ClInclude Include="src\BehaviorTree\Tasks\Task.h" />
     <ClInclude Include="src\BehaviorTree\Tasks\CanSmellCharacterTask.h" />
     <ClInclude Include="src\BehaviorTree\Tasks\CanEatCharacterTask.h" />
+    <ClInclude Include="src\Actions\ResetAction.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

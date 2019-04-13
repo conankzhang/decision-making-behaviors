@@ -34,12 +34,15 @@ public:
 	void SetBehavior(EBehavior InBehavior);
 	inline EBehavior GetBehavior() const { return Behavior; }
 
+	void ResetPosition();
+
 private:
 	const ofColor& FlockColor;
 	void UpdateCenterOfMass();
 	SBehaviorOutput GetBehaviorOutput(const CBoid& InBoid);
 
 	ofVec2f CenterOfMass;
+	ofVec2f InitialPosition;
 
 	std::vector<CBoid *> Boids;
 	const std::vector<SWeightedBehavior*>& WeightedBehaviors;

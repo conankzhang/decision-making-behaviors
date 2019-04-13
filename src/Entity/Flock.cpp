@@ -11,12 +11,13 @@ CFlock::CFlock(int InFlockCount, const std::vector<SWeightedBehavior*>& InWeight
 	WeightedBehaviors(InWeightedBehaviors),
 	FlockColor(InColor),
 	DecisionMakingBehavior(InDecisionMakingBehavior),
-	bIsMonster(false)
+	bIsMonster(false),
+	InitialPosition(InInitialPosition)
 {
 	Boids.reserve(InFlockCount);
 	for (int i = 0; i < InFlockCount; i++)
 	{
-		Boids.push_back(new CBoid(this, InInitialPosition));
+		Boids.push_back(new CBoid(this, InitialPosition));
 	}
 
 	if (static_cast<CBehaviorTree*>(DecisionMakingBehavior))
@@ -86,6 +87,15 @@ void CFlock::SetBehavior(EBehavior InBehavior)
 	if (DecisionMakingBehavior)
 	{
 		ActionManager.ScheduleAction(DecisionMakingBehavior->GetAction());
+	}
+}
+
+//=======================================================================================================================
+void CFlock::ResetPosition()
+{
+	for (auto Boid : Boids)
+	{
+		Boid->SetPosition(InitialPosition);
 	}
 }
 

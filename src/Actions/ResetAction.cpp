@@ -1,25 +1,27 @@
-#include "WanderAction.h"
+#include "ResetAction.h"
 
 #include "../Movement/wander-steering.h"
 #include "../Movement/Behavior.h"
 
+#include "../Entity/Flock.h"
 
 //=======================================================================================================================
-CWanderAction::CWanderAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors, const std::vector<CObstacle*>& InObstacles) :
-	CAction(5.0, 5.0, true),
+CResetAction::CResetAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors, const std::vector<CObstacle*>& InObstacles, CFlock* InCharacter) :
 	WeightedBehaviors(InWeightedBehaviors),
-	Obstacles(InObstacles)
+	Obstacles(InObstacles),
+	Character(InCharacter),
+	Monster(nullptr)
 {
 
 }
 
 //=======================================================================================================================
-CWanderAction::~CWanderAction()
+CResetAction::~CResetAction()
 {
 }
 
 //=======================================================================================================================
-void CWanderAction::Execute()
+void CResetAction::Execute()
 {
 	for (auto Behavior : WeightedBehaviors)
 	{
@@ -27,6 +29,9 @@ void CWanderAction::Execute()
 	}
 	WeightedBehaviors.clear();
 	WeightedBehaviors.push_back(new SWeightedBehavior(new cwander_steering(Obstacles), 1));
+
+	Character->ResetPosition();
+	Monster->ResetPosition();
 
 	IsComplete = true;
 	QueuedTime = 0.0;

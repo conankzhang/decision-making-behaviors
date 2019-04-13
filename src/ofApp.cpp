@@ -21,6 +21,7 @@
 
 #include "Actions/FollowAction.h"
 #include "Actions/WanderAction.h"
+#include "Actions/ResetAction.h"
 
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackBoard.h"
@@ -74,11 +75,14 @@ void ofApp::setup()
 	CSequencer* EatSequence = new CSequencer(5);
 	CCanEatCharacerTask* CanEatTask = new CCanEatCharacerTask(6, Character);
 	EatSequence->AddChild(CanEatTask);
+	CResetAction* ResetAction = new CResetAction(MonsterBehaviors, Obstacles, Character);
+	EatSequence->AddChild(new CActionTask(7, ResetAction));
+
 	Inverter->AddChild(EatSequence);
 	FollowSequence->AddChild(Inverter);
 
 	CFollowAction* MonsterFollowAction = new CFollowAction(MonsterBehaviors, MonsterPath, DivisionScheme, Target, Graph, Heuristic);
-	FollowSequence->AddChild(new CActionTask(6, MonsterFollowAction));
+	FollowSequence->AddChild(new CActionTask(8, MonsterFollowAction));
 
 	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, BehaviorTreeRoot, BlackBoard);
 
@@ -87,6 +91,7 @@ void ofApp::setup()
 	CanSmellTask->SetMonster(Monster);
 	MonsterFollowAction->SetCharacter(Character);
 	MonsterFollowAction->SetMonster(Monster);
+	ResetAction->SetMonster(Monster);
 }
 
 //=======================================================================================================================

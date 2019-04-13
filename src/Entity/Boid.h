@@ -27,6 +27,7 @@ public:
 	void Update(const SBehaviorOutput& Behavior, double DeltaTime);
 	void Draw(const ofColor& BoidColor) const;
 
+	inline void SetPosition(const ofVec2f& InPosition) { Transform.Position = InPosition; }
 	inline ofVec2f GetPosition() const { return Transform.Position; }
 	inline ofVec2f GetVelocity() const { return Transform.Velocity; }
 	inline float GetOrientation() const { return Transform.Orientation; }
