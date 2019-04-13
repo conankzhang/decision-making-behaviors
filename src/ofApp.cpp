@@ -22,6 +22,7 @@
 #include "Actions/FollowAction.h"
 #include "Actions/WanderAction.h"
 #include "Actions/ResetAction.h"
+#include "Actions/PatrolAction.h"
 
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackBoard.h"
@@ -66,7 +67,8 @@ void ofApp::setup()
 
 	CSequencer* SmellSequence = new CSequencer(1);
 	BehaviorTreeRoot->AddChild(SmellSequence);
-	BehaviorTreeRoot->AddChild(new CActionTask(2, new CWanderAction(MonsterBehaviors, Obstacles)));
+	//BehaviorTreeRoot->AddChild(new CActionTask(2, new CWanderAction(MonsterBehaviors, Obstacles)));
+	BehaviorTreeRoot->AddChild(new CActionTask(2, new CPatrolAction(MonsterBehaviors)));
 
 	CCanSmellCharacterTask* CanSmellTask = new CCanSmellCharacterTask(3, Character);
 	SmellSequence->AddChild(CanSmellTask);
@@ -170,7 +172,7 @@ void ofApp::CreateObstacles()
 {
 	Obstacles.push_back(new CObstacle(100.0f, 100.0f, 100.0f, 100.0f));
 	Obstacles.push_back(new CObstacle(300.0f, 300.0f, 100.0f, 300.0f));
-	Obstacles.push_back(new CObstacle(600.0f, 500.0f, 200.0f, 100.0f));
+	Obstacles.push_back(new CObstacle(500.0f, 600.0f, 200.0f, 100.0f));
 }
 
 //--------------------------------------------------------------

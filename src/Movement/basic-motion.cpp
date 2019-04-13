@@ -8,7 +8,7 @@
 cbasic_motion::cbasic_motion() :
 	WindowHeight(ofGetWindowHeight()),
 	WindowWidth(ofGetWindowWidth()),
-	Direction(EDirection::UP),
+	Direction(EDirection::DOWN),
 	MaxSpeed(100.0f)
 {
 

@@ -1,6 +1,7 @@
 #include "PatrolAction.h"
 
 #include "../Movement/basic-motion.h"
+#include "../Movement/DynamicLookWhereYouAreGoing.h"
 #include "../Movement/Behavior.h"
 
 //=======================================================================================================================
@@ -26,6 +27,7 @@ void CPatrolAction::Execute()
 
 	WeightedBehaviors.clear();
 	WeightedBehaviors.push_back(new SWeightedBehavior(new cbasic_motion(), 1));
+	WeightedBehaviors.push_back(new SWeightedBehavior(new CDynamicLookWhereYouAreGoing(), 1));
 
 	IsComplete = true;
 	QueuedTime = 0.0;
