@@ -23,8 +23,10 @@ CDecisionNode::~CDecisionNode()
 CDecisionTreeNode* CDecisionNode::MakeDecision()
 {
 	CDecisionTreeNode* Branch = GetBranch();
-	if (Branch)
+	if (!Branch)
 	{
-		return Branch->MakeDecision();
+		return nullptr;
 	}
+
+	return Branch->MakeDecision();
 }
