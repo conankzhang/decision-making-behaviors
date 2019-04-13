@@ -26,7 +26,7 @@ EStatus CCanEatCharacerTask::OnExecute(CTick* InTick)
 
 	float Distance = (Character->GetCenterOfMass() - Monster->GetCenterOfMass()).length();
 
-	if (fabsf(Distance) < 100)
+	if (fabsf(Distance) < 80)
 	{
 		return EStatus::SUCCESS;
 	}

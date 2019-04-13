@@ -122,6 +122,8 @@ void CBoid::Draw(const ofColor& BoidColor) const
 	{
 		ofNoFill();
 		ofDrawCircle(Transform.Position, Size * 25);
+		ofSetColor(ofColor::red);
+		ofDrawCircle(Transform.Position, Size * 8);
 		ofFill();
 	}
 }
