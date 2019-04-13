@@ -180,6 +180,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BehaviorTree\Tasks\Randomizer.cpp" />
     <ClCompile Include="src\Actions\PatrolAction.cpp" />
     <ClCompile Include="src\Actions\ResetAction.cpp" />
     <ClCompile Include="src\BehaviorTree\Tasks\CanEatCharacterTask.cpp" />
@@ -223,6 +224,7 @@
     <ClCompile Include="src\BehaviorTree\Tick.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BehaviorTree\Tasks\Randomizer.h" />
     <ClInclude Include="src\Actions\PatrolAction.h" />
     <ClInclude Include="src\Actions\ResetAction.h" />
     <ClInclude Include="src\BehaviorTree\Tasks\CanEatCharacterTask.h" />

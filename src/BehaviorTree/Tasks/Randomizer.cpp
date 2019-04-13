@@ -1,4 +1,4 @@
-#include "Sequencer.h"
+#include "Randomizer.h"
 
 #include "../Tick.h"
 #include "../BlackBoard.h"
@@ -6,42 +6,40 @@
 #include "../BehaviorTree.h"
 
 //=======================================================================================================================
-CSequencer::CSequencer(size_t InTaskId) :
+CRandomizer::CRandomizer(size_t InTaskId) :
 	CTask(InTaskId)
 {
+
 }
 
 //=======================================================================================================================
-CSequencer::~CSequencer()
+CRandomizer::~CRandomizer()
 {
 }
 
 //=======================================================================================================================
-void CSequencer::OnOpen(CTick* InTick)
+void CRandomizer::OnOpen(CTick* InTick)
 {
+	size_t RandomChildId = rand() % ( GetChildren().size() + 1);
 	InTick->GetBlackBoard()->SetValue("RunningChild", new CBlackBoardValue<size_t>(0), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 }
 
 //=======================================================================================================================
-EStatus CSequencer::OnExecute(CTick* InTick)
+EStatus CRandomizer::OnExecute(CTick* InTick)
 {
 	std::shared_ptr<CBlackBoardValueBase> RunningChildIdBase = InTick->GetBlackBoard()->GetValue("RunningChild", InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 	size_t RunningChildId = dynamic_cast<CBlackBoardValue<size_t>&>(*RunningChildIdBase).GetValue();
 
-	for (size_t ChildId = RunningChildId; ChildId < GetChildren().size(); ChildId++)
-	{
-		CTask* ChildTask = GetChildren()[ChildId];
-		EStatus ChildStatus = ChildTask->Run(InTick);
+	CTask* ChildTask = GetChildren()[RunningChildId];
+	EStatus ChildStatus = ChildTask->Run(InTick);
 
-		if (ChildStatus != EStatus::SUCCESS)
+	if (ChildStatus != EStatus::SUCCESS)
+	{
+		if (ChildStatus == EStatus::RUNNING)
 		{
-			if (ChildStatus == EStatus::RUNNING)
-			{
-				InTick->GetBlackBoard()->SetValue("RunningChild", new CBlackBoardValue<size_t>(ChildId), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
-			}
-			return ChildStatus;
+			InTick->GetBlackBoard()->SetValue("RunningChild", new CBlackBoardValue<size_t>(RunningChildId), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
 		}
 	}
 
-	return EStatus::SUCCESS;
+	return ChildStatus;
 }
