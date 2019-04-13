@@ -19,4 +19,6 @@ protected:
 protected:
 	CFlock* Character;
 	CFlock* Monster;
+
+	bool bFound;
 };

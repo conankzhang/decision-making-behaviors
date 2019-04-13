@@ -27,8 +27,8 @@
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackBoard.h"
 #include "BehaviorTree/Tasks/Sequencer.h"
-#include "BehaviorTree/Tasks/Inverter.h"
 #include "BehaviorTree/Tasks/Selector.h"
+#include "BehaviorTree/Tasks/Randomizer.h"
 #include "BehaviorTree/Tasks/ActionTask.h"
 #include "BehaviorTree/Tasks/CanSmellCharacterTask.h"
 #include "BehaviorTree/Tasks/CanEatCharacterTask.h"
@@ -67,8 +67,11 @@ void ofApp::setup()
 
 	CSequencer* SmellSequence = new CSequencer(1);
 	BehaviorTreeRoot->AddChild(SmellSequence);
-	//BehaviorTreeRoot->AddChild(new CActionTask(2, new CWanderAction(MonsterBehaviors, Obstacles)));
-	BehaviorTreeRoot->AddChild(new CActionTask(2, new CPatrolAction(MonsterBehaviors)));
+
+	CRandomizer* Randomizer = new CRandomizer(9);
+	BehaviorTreeRoot->AddChild(Randomizer);
+	Randomizer->AddChild(new CActionTask(2, new CWanderAction(MonsterBehaviors, Obstacles)));
+	Randomizer->AddChild(new CActionTask(10, new CPatrolAction(MonsterBehaviors)));
 
 	CCanSmellCharacterTask* CanSmellTask = new CCanSmellCharacterTask(3, Character);
 	SmellSequence->AddChild(CanSmellTask);

@@ -7,7 +7,8 @@
 
 //=======================================================================================================================
 CRandomizer::CRandomizer(size_t InTaskId) :
-	CTask(InTaskId)
+	CTask(InTaskId),
+	RandomChildId(0)
 {
 
 }
@@ -20,26 +21,26 @@ CRandomizer::~CRandomizer()
 //=======================================================================================================================
 void CRandomizer::OnOpen(CTick* InTick)
 {
-	size_t RandomChildId = rand() % ( GetChildren().size() + 1);
-	InTick->GetBlackBoard()->SetValue("RunningChild", new CBlackBoardValue<size_t>(0), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
+	std::shared_ptr<CBlackBoardValueBase> RandomizeBase = InTick->GetBlackBoard()->GetValue("Randomize");
+
+	bool bRandomize = false;
+	if (RandomizeBase)
+	{
+		bRandomize = dynamic_cast<CBlackBoardValue<bool>&>(*RandomizeBase).GetValue();
+	}
+
+	if (bRandomize)
+	{
+		RandomChildId = rand() % 2;
+		InTick->GetBlackBoard()->SetValue("Randomize", new CBlackBoardValue<bool>(false));
+	}
 }
 
 //=======================================================================================================================
 EStatus CRandomizer::OnExecute(CTick* InTick)
 {
-	std::shared_ptr<CBlackBoardValueBase> RunningChildIdBase = InTick->GetBlackBoard()->GetValue("RunningChild", InTick->GetBehaviorTree()->GetTreeId(), TaskId);
-	size_t RunningChildId = dynamic_cast<CBlackBoardValue<size_t>&>(*RunningChildIdBase).GetValue();
-
-	CTask* ChildTask = GetChildren()[RunningChildId];
+	CTask* ChildTask = GetChildren()[RandomChildId];
 	EStatus ChildStatus = ChildTask->Run(InTick);
-
-	if (ChildStatus != EStatus::SUCCESS)
-	{
-		if (ChildStatus == EStatus::RUNNING)
-		{
-			InTick->GetBlackBoard()->SetValue("RunningChild", new CBlackBoardValue<size_t>(RunningChildId), InTick->GetBehaviorTree()->GetTreeId(), TaskId);
-		}
-	}
 
 	return ChildStatus;
 }

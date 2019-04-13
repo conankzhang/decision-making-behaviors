@@ -12,5 +12,8 @@ public:
 protected:
 	virtual void OnOpen(CTick* InTick) override;
 	virtual EStatus OnExecute(CTick* InTick) override;
+
+protected:
+	size_t RandomChildId;
 };
 
