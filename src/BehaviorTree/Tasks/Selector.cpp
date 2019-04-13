@@ -1,9 +1,9 @@
 #include "Selector.h"
 
-#include "Tick.h"
-#include "BlackBoard.h"
-#include "BlackBoardValue.h"
-#include "BehaviorTree.h"
+#include "../Tick.h"
+#include "../BlackBoard.h"
+#include "../BlackBoardValue.h"
+#include "../BehaviorTree.h"
 
 //=======================================================================================================================
 CSelector::CSelector(size_t InTaskId) :
