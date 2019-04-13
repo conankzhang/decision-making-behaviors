@@ -7,7 +7,7 @@
 
 //=======================================================================================================================
 CResetAction::CResetAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors, const std::vector<CObstacle*>& InObstacles, CFlock* InCharacter) :
-	CAction(5.0, 6.0, true),
+	CAction(5.0, 5.0, true),
 	WeightedBehaviors(InWeightedBehaviors),
 	Obstacles(InObstacles),
 	Character(InCharacter),

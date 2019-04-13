@@ -1,31 +1,31 @@
-#include "WanderAction.h"
+#include "PatrolAction.h"
 
-#include "../Movement/wander-steering.h"
+#include "../Movement/basic-motion.h"
 #include "../Movement/Behavior.h"
 
 //=======================================================================================================================
-CWanderAction::CWanderAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors, const std::vector<CObstacle*>& InObstacles) :
+CPatrolAction::CPatrolAction(std::vector<SWeightedBehavior*>& InWeightedBehaviors) :
 	CAction(5.0, 5.0, true),
-	WeightedBehaviors(InWeightedBehaviors),
-	Obstacles(InObstacles)
+	WeightedBehaviors(InWeightedBehaviors)
 {
 
 }
 
 //=======================================================================================================================
-CWanderAction::~CWanderAction()
+CPatrolAction::~CPatrolAction()
 {
 }
 
 //=======================================================================================================================
-void CWanderAction::Execute()
+void CPatrolAction::Execute()
 {
 	for (auto Behavior : WeightedBehaviors)
 	{
 		delete Behavior;
 	}
+
 	WeightedBehaviors.clear();
-	WeightedBehaviors.push_back(new SWeightedBehavior(new cwander_steering(Obstacles), 1));
+	WeightedBehaviors.push_back(new SWeightedBehavior(new cbasic_motion(), 1));
 
 	IsComplete = true;
 	QueuedTime = 0.0;
