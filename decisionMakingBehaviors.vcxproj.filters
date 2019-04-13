@@ -43,6 +43,7 @@
     <ClCompile Include="src\BehaviorTree\Tasks\Sequencer.cpp" />
     <ClCompile Include="src\BehaviorTree\Tasks\Task.cpp" />
     <ClCompile Include="src\BehaviorTree\Tasks\CanSmellCharacterTask.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\CanEatCharacerTask.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -92,6 +93,7 @@
     <ClInclude Include="src\BehaviorTree\Tasks\Sequencer.h" />
     <ClInclude Include="src\BehaviorTree\Tasks\Task.h" />
     <ClInclude Include="src\BehaviorTree\Tasks\CanSmellCharacterTask.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\CanEatCharacerTask.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
