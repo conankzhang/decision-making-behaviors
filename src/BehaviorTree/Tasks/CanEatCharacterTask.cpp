@@ -1,4 +1,4 @@
-#include "CanEatCharacerTask.h"
+#include "CanEatCharacterTask.h"
 
 #include "../../Entity/Flock.h"
 

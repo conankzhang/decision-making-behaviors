@@ -180,7 +180,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\BehaviorTree\Tasks\CanEatCharacerTask.cpp" />
+    <ClCompile Include="src\BehaviorTree\Tasks\CanEatCharacterTask.cpp" />
     <ClCompile Include="src\BehaviorTree\Tasks\CanSmellCharacterTask.cpp" />
     <ClCompile Include="src\BehaviorTree\Tasks\ActionTask.cpp" />
     <ClCompile Include="src\BehaviorTree\Tasks\Inverter.cpp" />
@@ -221,7 +221,7 @@
     <ClCompile Include="src\BehaviorTree\Tick.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BehaviorTree\Tasks\CanEatCharacerTask.h" />
+    <ClInclude Include="src\BehaviorTree\Tasks\CanEatCharacterTask.h" />
     <ClInclude Include="src\BehaviorTree\Tasks\CanSmellCharacterTask.h" />
     <ClInclude Include="src\BehaviorTree\Tasks\ActionTask.h" />
     <ClInclude Include="src\BehaviorTree\Tasks\Inverter.h" />

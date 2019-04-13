@@ -29,6 +29,7 @@
 #include "BehaviorTree/Tasks/Selector.h"
 #include "BehaviorTree/Tasks/ActionTask.h"
 #include "BehaviorTree/Tasks/CanSmellCharacterTask.h"
+#include "BehaviorTree/Tasks/CanEatCharacterTask.h"
 
 //=======================================================================================================================
 void ofApp::setup()
@@ -68,12 +69,21 @@ void ofApp::setup()
 
 	CCanSmellCharacterTask* CanSmellTask = new CCanSmellCharacterTask(3, Character);
 	FollowSequence->AddChild(CanSmellTask);
+
+	CInverter* Inverter = new CInverter(4);
+	CSequencer* EatSequence = new CSequencer(5);
+	CCanEatCharacerTask* CanEatTask = new CCanEatCharacerTask(6, Character);
+	EatSequence->AddChild(CanEatTask);
+	Inverter->AddChild(EatSequence);
+	FollowSequence->AddChild(Inverter);
+
 	CFollowAction* MonsterFollowAction = new CFollowAction(MonsterBehaviors, MonsterPath, DivisionScheme, Target, Graph, Heuristic);
-	FollowSequence->AddChild(new CActionTask(4, MonsterFollowAction));
+	FollowSequence->AddChild(new CActionTask(6, MonsterFollowAction));
 
 	CDecisionMakingBehavior* BehaviorTree = new CBehaviorTree(0, BehaviorTreeRoot, BlackBoard);
 
 	Monster = new CFlock(1, MonsterBehaviors, ofColor::green, BehaviorTree, ofVec2f(ofGetWindowWidth() - 50.0f, 50.0f));
+	CanEatTask->SetMonster(Monster);
 	CanSmellTask->SetMonster(Monster);
 	MonsterFollowAction->SetCharacter(Character);
 	MonsterFollowAction->SetMonster(Monster);
